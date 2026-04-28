@@ -16,6 +16,7 @@ import {
   ArrowLeft,
   Shield,
   Zap,
+  MessageSquare,
 } from "lucide-react"
 import { motion } from "framer-motion"
 
@@ -29,6 +30,7 @@ const iconMap = {
   AlertCircle,
   ClipboardList,
   Zap,
+  MessageSquare,
 }
 
 const services = [
@@ -248,6 +250,24 @@ const services = [
       "Negotiation support",
     ],
   },
+  {
+    slug: "any-problem",
+    iconName: "MessageSquare",
+    title: "Any problem you can share with us",
+    shortDescription: "Share Your Unique Challenge",
+    fullDescription:
+      "Facing an unlisted financial problem? Don't worry. Share your unique challenge with us, and our experts will analyze it and guide you to the best possible solution.",
+    color: "#4F46E5",
+    bg: "#E0E7FF",
+    accent: "#6366F1",
+    badge: "Let's Talk",
+    benefits: [
+      "Custom problem analysis",
+      "Expert consultation",
+      "Tailored resolution plan",
+      "Dedicated support",
+    ],
+  },
 ]
 
 const containerVariants = {
@@ -372,7 +392,7 @@ export default function OurServicesPage() {
 
                     {/* CTA Button */}
                     <Link
-                      href={`/services/${service.slug}`}
+                      href={service.slug === 'any-problem' ? '/contact-us' : `/services/${service.slug}#how-we-help-you`}
                       className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold text-white transition-all duration-200 group/btn hover:shadow-lg hover:-translate-y-0.5 transform w-full"
                       style={{ backgroundColor: service.color }}
                     >
@@ -461,7 +481,7 @@ export default function OurServicesPage() {
               href="/contact-us"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#F0A500] hover:bg-[#F7C04A] text-[#1B3F8B] font-bold rounded-xl transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group"
             >
-              <span>Get Free Consultation Now</span>
+              <span>Start your Case</span>
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>

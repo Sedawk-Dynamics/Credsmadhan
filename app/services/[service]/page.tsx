@@ -62,7 +62,12 @@ export default function ServicePage() {
 
   const schema = serviceSchemas[service.slug as keyof typeof serviceSchemas]
   const handleGetHelpClick = () => {
-    window.location.href = 'https://www.credsmadhan.com/contact-us'
+    const section = document.getElementById('crm-form-section')
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      window.location.href = '#crm-form-section'
+    }
   }
 
   const breadcrumbs: BreadcrumbItem[] = [
@@ -105,7 +110,7 @@ export default function ServicePage() {
       </section>
 
       {/* Solution Overview - Enhanced Grid */}
-      <section className="py-12 px-4">
+      <section id="how-we-help-you" className="py-12 px-4">
         <div className="container mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -303,7 +308,7 @@ export default function ServicePage() {
       {/* CRM Form Section */}
       <CrmFormSection
         id="crm-form-section"
-        title="Get Help Now"
+        title="CRM form"
         subtitle="Expert Financial Assistance"
         description="Fill out the form below and our team will get back to you within 24 hours with a customized solution for your financial problem."
         formUrl={service.crmFormUrl}
@@ -330,13 +335,13 @@ export default function ServicePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => (window.location.href = '/contact-us')}
                 className="px-8 py-4 bg-[#F0A500] text-[#1B3F8B] font-bold rounded-xl hover:bg-[#F7C04A] transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
-                Get Free Consultation Today
+                Start your Case
               </button>
               <a
-                href="/#services"
+                href="/services"
                 className="px-8 py-4 bg-white/20 text-white font-bold rounded-xl hover:bg-white/30 transition-all duration-200 border border-white/30 hover:border-white/50"
               >
                 Explore Other Services

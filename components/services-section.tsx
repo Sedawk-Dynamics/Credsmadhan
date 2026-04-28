@@ -16,6 +16,7 @@ import {
   CheckCircle2,
   Briefcase,
   Shield,
+  MessageSquare,
 } from "lucide-react"
 import { motion } from "framer-motion"
 
@@ -141,6 +142,17 @@ const services = [
     bg: "#FEF3C7",
     accent: "#FBBF24",
     urgencyTag: "Legal Action",
+  },
+  {
+    slug: "any-problem",
+    icon: MessageSquare,
+    title: "Any problem you can share with us",
+    description:
+      "Facing an unlisted financial problem? Don't worry. Share your unique challenge with us, and our experts will guide you to the right solution.",
+    color: "#4F46E5",
+    bg: "#E0E7FF",
+    accent: "#6366F1",
+    urgencyTag: "Let's Talk",
   },
 ]
 
@@ -276,7 +288,7 @@ export default function ServicesSection() {
                 {/* Learn More Button */}
                 <div className="px-6 pb-6 pt-3 border-t border-[#E2E8F0]">
                   <Link
-                    href={`/services/${service.slug}`}
+                    href={service.slug === 'any-problem' ? '/contact-us' : `/services/${service.slug}#how-we-help-you`}
                     className="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-lg font-semibold text-sm transition-all duration-200 group/btn text-white hover:shadow-lg hover:-translate-y-0.5 transform"
                     style={{ backgroundColor: service.color }}
                   >
@@ -314,7 +326,7 @@ export default function ServicesSection() {
             className="inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-[#1B3F8B] to-[#2a52a8] text-white font-bold rounded-xl hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group"
           >
             <Lock size={18} />
-            <span>Get Free Expert Consultation</span>
+            <span>Start your Case</span>
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>

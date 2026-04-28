@@ -62,13 +62,15 @@ export const services: Service[] = [
       { name: 'pan', label: 'PAN (optional)', type: 'text' },
       { name: 'cibilScore', label: 'Current CIBIL Score (if known)', type: 'number' },
       { name: 'lastCheckDate', label: 'When did you last check your CIBIL?', type: 'date' },
-      { name: 'knownIssues', label: 'Known issues on your report', type: 'checkbox', options: [
-        { label: 'Hard inquiries', value: 'hard-inquiries' },
-        { label: 'Days past due (DPD)', value: 'dpd' },
-        { label: 'High credit utilization', value: 'high-utilization' },
-        { label: 'Multiple recent applications', value: 'multiple-applications' },
-        { label: 'Not sure', value: 'not-sure' },
-      ] },
+      {
+        name: 'knownIssues', label: 'Known issues on your report', type: 'checkbox', options: [
+          { label: 'Hard inquiries', value: 'hard-inquiries' },
+          { label: 'Days past due (DPD)', value: 'dpd' },
+          { label: 'High credit utilization', value: 'high-utilization' },
+          { label: 'Multiple recent applications', value: 'multiple-applications' },
+          { label: 'Not sure', value: 'not-sure' },
+        ]
+      },
       { name: 'problemDescription', label: 'Describe your main concern', type: 'textarea', required: true },
       { name: 'consent', label: 'I agree to the terms and conditions', type: 'checkbox', required: true },
       { name: 'privacyConsent', label: 'I accept the privacy policy', type: 'checkbox', required: true },
@@ -111,19 +113,23 @@ export const services: Service[] = [
       { name: 'email', label: 'Email Address', type: 'email', required: true },
       { name: 'dob', label: 'Date of Birth', type: 'date', required: true },
       { name: 'cibilScore', label: 'Current CIBIL Score (if known)', type: 'number' },
-      { name: 'affectedBureaus', label: 'Which bureaus have the error?', type: 'checkbox', required: true, options: [
-        { label: 'CIBIL', value: 'cibil' },
-        { label: 'Equifax', value: 'equifax' },
-        { label: 'Experian', value: 'experian' },
-        { label: 'CRIF HighMark', value: 'crif' },
-      ] },
-      { name: 'disputeType', label: 'Type of dispute', type: 'checkbox', required: true, options: [
-        { label: 'Wrong entry / not mine', value: 'wrong-entry' },
-        { label: 'Incorrect balance', value: 'incorrect-balance' },
-        { label: 'Paid account shown as unpaid', value: 'paid-as-unpaid' },
-        { label: 'Duplicate account', value: 'duplicate' },
-        { label: 'Account closed but showing as active', value: 'closed-active' },
-      ] },
+      {
+        name: 'affectedBureaus', label: 'Which bureaus have the error?', type: 'checkbox', required: true, options: [
+          { label: 'CIBIL', value: 'cibil' },
+          { label: 'Equifax', value: 'equifax' },
+          { label: 'Experian', value: 'experian' },
+          { label: 'CRIF HighMark', value: 'crif' },
+        ]
+      },
+      {
+        name: 'disputeType', label: 'Type of dispute', type: 'checkbox', required: true, options: [
+          { label: 'Wrong entry / not mine', value: 'wrong-entry' },
+          { label: 'Incorrect balance', value: 'incorrect-balance' },
+          { label: 'Paid account shown as unpaid', value: 'paid-as-unpaid' },
+          { label: 'Duplicate account', value: 'duplicate' },
+          { label: 'Account closed but showing as active', value: 'closed-active' },
+        ]
+      },
       { name: 'incorrectDetails', label: 'Details of incorrect information', type: 'textarea', required: true },
       { name: 'problemDescription', label: 'How is this affecting you?', type: 'textarea', required: true },
       { name: 'consent', label: 'I agree to the terms and conditions', type: 'checkbox', required: true },
@@ -167,27 +173,33 @@ export const services: Service[] = [
       { name: 'phone', label: 'Phone Number', type: 'tel', required: true },
       { name: 'email', label: 'Email Address', type: 'email', required: true },
       { name: 'dob', label: 'Date of Birth', type: 'date', required: true },
-      { name: 'loanType', label: 'Type of loan', type: 'select', required: true, options: [
-        { label: 'Home Loan', value: 'home-loan' },
-        { label: 'Personal Loan', value: 'personal-loan' },
-        { label: 'Auto Loan', value: 'auto-loan' },
-        { label: 'Education Loan', value: 'education-loan' },
-        { label: 'Multiple Loans', value: 'multiple-loans' },
-      ] },
+      {
+        name: 'loanType', label: 'Type of loan', type: 'select', required: true, options: [
+          { label: 'Home Loan', value: 'home-loan' },
+          { label: 'Personal Loan', value: 'personal-loan' },
+          { label: 'Auto Loan', value: 'auto-loan' },
+          { label: 'Education Loan', value: 'education-loan' },
+          { label: 'Multiple Loans', value: 'multiple-loans' },
+        ]
+      },
       { name: 'loanAmount', label: 'Loan amount (₹)', type: 'number', required: true },
       { name: 'emiAmount', label: 'Current EMI (₹)', type: 'number', required: true },
-      { name: 'loanStatus', label: 'Current loan status', type: 'radio', required: true, options: [
-        { label: 'Active', value: 'active' },
-        { label: 'Overdue', value: 'overdue' },
-        { label: 'Defaulted', value: 'defaulted' },
-      ] },
-      { name: 'stressReasons', label: 'Why are you facing EMI stress?', type: 'checkbox', required: true, options: [
-        { label: 'Job loss / income reduction', value: 'income-reduction' },
-        { label: 'Medical emergency', value: 'medical' },
-        { label: 'Business slowdown', value: 'business-slowdown' },
-        { label: 'Unexpected expenses', value: 'unexpected-expenses' },
-        { label: 'Multiple loan obligations', value: 'multiple-loans' },
-      ] },
+      {
+        name: 'loanStatus', label: 'Current loan status', type: 'radio', required: true, options: [
+          { label: 'Active', value: 'active' },
+          { label: 'Overdue', value: 'overdue' },
+          { label: 'Defaulted', value: 'defaulted' },
+        ]
+      },
+      {
+        name: 'stressReasons', label: 'Why are you facing EMI stress?', type: 'checkbox', required: true, options: [
+          { label: 'Job loss / income reduction', value: 'income-reduction' },
+          { label: 'Medical emergency', value: 'medical' },
+          { label: 'Business slowdown', value: 'business-slowdown' },
+          { label: 'Unexpected expenses', value: 'unexpected-expenses' },
+          { label: 'Multiple loan obligations', value: 'multiple-loans' },
+        ]
+      },
       { name: 'problemDescription', label: 'Describe your situation in detail', type: 'textarea', required: true },
       { name: 'consent', label: 'I agree to the terms and conditions', type: 'checkbox', required: true },
       { name: 'privacyConsent', label: 'I accept the privacy policy', type: 'checkbox', required: true },
@@ -231,12 +243,14 @@ export const services: Service[] = [
       { name: 'email', label: 'Email Address', type: 'email', required: true },
       { name: 'dob', label: 'Date of Birth', type: 'date', required: true },
       { name: 'institutionName', label: 'Bank / NBFC name', type: 'text', required: true },
-      { name: 'issueType', label: 'Issue type', type: 'checkbox', required: true, options: [
-        { label: 'Unauthorized transaction', value: 'unauthorized' },
-        { label: 'Incorrect charges', value: 'incorrect-charges' },
-        { label: 'Billing dispute', value: 'billing-dispute' },
-        { label: 'Service failure', value: 'service-failure' },
-      ] },
+      {
+        name: 'issueType', label: 'Issue type', type: 'checkbox', required: true, options: [
+          { label: 'Unauthorized transaction', value: 'unauthorized' },
+          { label: 'Incorrect charges', value: 'incorrect-charges' },
+          { label: 'Billing dispute', value: 'billing-dispute' },
+          { label: 'Service failure', value: 'service-failure' },
+        ]
+      },
       { name: 'transactionDate', label: 'Date of transaction', type: 'date' },
       { name: 'amountInvolved', label: 'Amount involved (₹)', type: 'number' },
       { name: 'disputeNature', label: 'Detailed description of the issue', type: 'textarea', required: true },
@@ -282,20 +296,24 @@ export const services: Service[] = [
       { name: 'phone', label: 'Phone Number', type: 'tel', required: true },
       { name: 'email', label: 'Email Address', type: 'email', required: true },
       { name: 'dob', label: 'Date of Birth', type: 'date', required: true },
-      { name: 'insuranceType', label: 'Type of insurance', type: 'select', required: true, options: [
-        { label: 'Health Insurance', value: 'health' },
-        { label: 'Life Insurance', value: 'life' },
-        { label: 'Auto Insurance', value: 'auto' },
-        { label: 'Property Insurance', value: 'property' },
-        { label: 'Travel Insurance', value: 'travel' },
-      ] },
+      {
+        name: 'insuranceType', label: 'Type of insurance', type: 'select', required: true, options: [
+          { label: 'Health Insurance', value: 'health' },
+          { label: 'Life Insurance', value: 'life' },
+          { label: 'Auto Insurance', value: 'auto' },
+          { label: 'Property Insurance', value: 'property' },
+          { label: 'Travel Insurance', value: 'travel' },
+        ]
+      },
       { name: 'policyNumber', label: 'Policy number', type: 'text', required: true },
-      { name: 'issueType', label: 'Nature of issue', type: 'checkbox', required: true, options: [
-        { label: 'Mis-selling complaint', value: 'mis-selling' },
-        { label: 'Claim denial', value: 'claim-denial' },
-        { label: 'Policy correction', value: 'policy-correction' },
-        { label: 'Premium dispute', value: 'premium-dispute' },
-      ] },
+      {
+        name: 'issueType', label: 'Nature of issue', type: 'checkbox', required: true, options: [
+          { label: 'Mis-selling complaint', value: 'mis-selling' },
+          { label: 'Claim denial', value: 'claim-denial' },
+          { label: 'Policy correction', value: 'policy-correction' },
+          { label: 'Premium dispute', value: 'premium-dispute' },
+        ]
+      },
       { name: 'policyAge', label: 'How old is this policy?', type: 'text' },
       { name: 'claimStatus', label: 'Claim status (if applicable)', type: 'text' },
       { name: 'problemDescription', label: 'Describe the issue in detail', type: 'textarea', required: true },
@@ -342,14 +360,16 @@ export const services: Service[] = [
       { name: 'dob', label: 'Date of Birth', type: 'date', required: true },
       { name: 'pan', label: 'PAN (optional)', type: 'text' },
       { name: 'searchKeywords', label: 'Names or identifiers to search', type: 'text', required: true, placeholder: 'Your name, parent name, company name, etc.' },
-      { name: 'institutions', label: 'Which institutions to search?', type: 'checkbox', required: true, options: [
-        { label: 'Banks (IEPF)', value: 'banks' },
-        { label: 'Mutual Funds', value: 'mutual-funds' },
-        { label: 'Insurance Companies', value: 'insurance' },
-        { label: 'Pension Funds', value: 'pension' },
-        { label: 'Stock Market (CDSL/NSDL)', value: 'stock-market' },
-        { label: 'All', value: 'all' },
-      ] },
+      {
+        name: 'institutions', label: 'Which institutions to search?', type: 'checkbox', required: true, options: [
+          { label: 'Banks (IEPF)', value: 'banks' },
+          { label: 'Mutual Funds', value: 'mutual-funds' },
+          { label: 'Insurance Companies', value: 'insurance' },
+          { label: 'Pension Funds', value: 'pension' },
+          { label: 'Stock Market (CDSL/NSDL)', value: 'stock-market' },
+          { label: 'All', value: 'all' },
+        ]
+      },
       { name: 'periodSearched', label: 'Time period of concern (e.g., 2010-2015)', type: 'text' },
       { name: 'problemDescription', label: 'Any specific accounts or investments you remember?', type: 'textarea', required: true },
       { name: 'consent', label: 'I agree to the terms and conditions', type: 'checkbox', required: true },
@@ -393,10 +413,12 @@ export const services: Service[] = [
       { name: 'phone', label: 'Phone Number', type: 'tel', required: true },
       { name: 'email', label: 'Email Address', type: 'email', required: true },
       { name: 'dob', label: 'Date of Birth', type: 'date', required: true },
-      { name: 'previousComplaintFiled', label: 'Have you already filed a complaint?', type: 'radio', required: true, options: [
-        { label: 'Yes', value: 'yes' },
-        { label: 'No', value: 'no' },
-      ] },
+      {
+        name: 'previousComplaintFiled', label: 'Have you already filed a complaint?', type: 'radio', required: true, options: [
+          { label: 'Yes', value: 'yes' },
+          { label: 'No', value: 'no' },
+        ]
+      },
       { name: 'complaintRefNumber', label: 'Complaint reference number (if filed)', type: 'text' },
       { name: 'institutionName', label: 'Institution name', type: 'text', required: true },
       { name: 'complaintDetails', label: 'Detailed complaint narrative', type: 'textarea', required: true, placeholder: 'Explain what happened, when, and how it affected you' },
@@ -443,26 +465,32 @@ export const services: Service[] = [
       { name: 'phone', label: 'Phone Number', type: 'tel', required: true },
       { name: 'email', label: 'Email Address', type: 'email', required: true },
       { name: 'dob', label: 'Date of Birth', type: 'date', required: true },
-      { name: 'documentTypeNeeded', label: 'What documents do you need?', type: 'checkbox', required: true, options: [
-        { label: 'Representation letter', value: 'representation' },
-        { label: 'Affidavit', value: 'affidavit' },
-        { label: 'NOC (No Objection Certificate)', value: 'noc' },
-        { label: 'Case summary', value: 'case-summary' },
-        { label: 'Ombudsman complaint format', value: 'ombudsman-format' },
-      ] },
-      { name: 'caseType', label: 'Type of case', type: 'select', required: true, options: [
-        { label: 'Credit/Banking dispute', value: 'credit-banking' },
-        { label: 'Insurance claim', value: 'insurance' },
-        { label: 'Loan default', value: 'loan-default' },
-        { label: 'Fraud/Unauthorized transaction', value: 'fraud' },
-        { label: 'Other', value: 'other' },
-      ] },
+      {
+        name: 'documentTypeNeeded', label: 'What documents do you need?', type: 'checkbox', required: true, options: [
+          { label: 'Representation letter', value: 'representation' },
+          { label: 'Affidavit', value: 'affidavit' },
+          { label: 'NOC (No Objection Certificate)', value: 'noc' },
+          { label: 'Case summary', value: 'case-summary' },
+          { label: 'Ombudsman complaint format', value: 'ombudsman-format' },
+        ]
+      },
+      {
+        name: 'caseType', label: 'Type of case', type: 'select', required: true, options: [
+          { label: 'Credit/Banking dispute', value: 'credit-banking' },
+          { label: 'Insurance claim', value: 'insurance' },
+          { label: 'Loan default', value: 'loan-default' },
+          { label: 'Fraud/Unauthorized transaction', value: 'fraud' },
+          { label: 'Other', value: 'other' },
+        ]
+      },
       { name: 'institutionInvolved', label: 'Financial institution involved', type: 'text', required: true },
-      { name: 'urgencyLevel', label: 'How urgent is this?', type: 'radio', required: true, options: [
-        { label: 'Low (2-3 weeks)', value: 'low' },
-        { label: 'Medium (1-2 weeks)', value: 'medium' },
-        { label: 'High (3-5 days)', value: 'high' },
-      ] },
+      {
+        name: 'urgencyLevel', label: 'How urgent is this?', type: 'radio', required: true, options: [
+          { label: 'Low (2-3 weeks)', value: 'low' },
+          { label: 'Medium (1-2 weeks)', value: 'medium' },
+          { label: 'High (3-5 days)', value: 'high' },
+        ]
+      },
       { name: 'problemDescription', label: 'Case details & background', type: 'textarea', required: true, placeholder: 'Provide a detailed narrative of your case' },
       { name: 'consent', label: 'I agree to the terms and conditions', type: 'checkbox', required: true },
       { name: 'privacyConsent', label: 'I accept the privacy policy', type: 'checkbox', required: true },
@@ -506,20 +534,24 @@ export const services: Service[] = [
       { name: 'email', label: 'Email Address', type: 'email', required: true },
       { name: 'dob', label: 'Date of Birth', type: 'date', required: true },
       { name: 'fraudDate', label: 'When did the fraud occur?', type: 'date', required: true },
-      { name: 'fraudType', label: 'Type of cyber fraud', type: 'checkbox', required: true, options: [
-        { label: 'Unauthorized access to account', value: 'unauthorized-access' },
-        { label: 'Online scam / phishing', value: 'phishing' },
-        { label: 'Card fraud / payment fraud', value: 'card-fraud' },
-        { label: 'Identity theft', value: 'identity-theft' },
-        { label: 'Investment fraud', value: 'investment-fraud' },
-        { label: 'Other', value: 'other' },
-      ] },
+      {
+        name: 'fraudType', label: 'Type of cyber fraud', type: 'checkbox', required: true, options: [
+          { label: 'Unauthorized access to account', value: 'unauthorized-access' },
+          { label: 'Online scam / phishing', value: 'phishing' },
+          { label: 'Card fraud / payment fraud', value: 'card-fraud' },
+          { label: 'Identity theft', value: 'identity-theft' },
+          { label: 'Investment fraud', value: 'investment-fraud' },
+          { label: 'Other', value: 'other' },
+        ]
+      },
       { name: 'amountLost', label: 'Amount lost (₹)', type: 'number', required: true },
       { name: 'platform', label: 'Platform/Institution affected', type: 'text', required: true },
-      { name: 'friReported', label: 'Have you reported to police?', type: 'radio', options: [
-        { label: 'Yes', value: 'yes' },
-        { label: 'No', value: 'no' },
-      ] },
+      {
+        name: 'friReported', label: 'Have you reported to police?', type: 'radio', options: [
+          { label: 'Yes', value: 'yes' },
+          { label: 'No', value: 'no' },
+        ]
+      },
       { name: 'friNumber', label: 'FIR number (if reported)', type: 'text' },
       { name: 'problemDescription', label: 'Detailed description of the fraud', type: 'textarea', required: true },
       { name: 'consent', label: 'I agree to the terms and conditions', type: 'checkbox', required: true },
@@ -565,23 +597,29 @@ export const services: Service[] = [
       { name: 'dob', label: 'Date of Birth', type: 'date', required: true },
       { name: 'companyName', label: 'Company/Employer name', type: 'text', required: true },
       { name: 'designation', label: 'Your designation', type: 'text', required: true },
-      { name: 'issueType', label: 'Type of issue', type: 'checkbox', required: true, options: [
-        { label: 'Sexual harassment (POSH)', value: 'posh' },
-        { label: 'Wage/salary issues', value: 'wage-issue' },
-        { label: 'Wrongful termination', value: 'termination' },
-        { label: 'Labor law violation', value: 'labor-violation' },
-        { label: 'Workplace discrimination', value: 'discrimination' },
-        { label: 'Other', value: 'other' },
-      ] },
+      {
+        name: 'issueType', label: 'Type of issue', type: 'checkbox', required: true, options: [
+          { label: 'Sexual harassment (POSH)', value: 'posh' },
+          { label: 'Wage/salary issues', value: 'wage-issue' },
+          { label: 'Wrongful termination', value: 'termination' },
+          { label: 'Labor law violation', value: 'labor-violation' },
+          { label: 'Workplace discrimination', value: 'discrimination' },
+          { label: 'Other', value: 'other' },
+        ]
+      },
       { name: 'incidentDate', label: 'When did the incident occur?', type: 'date', required: true },
-      { name: 'complaintFiled', label: 'Have you filed an internal complaint?', type: 'radio', required: true, options: [
-        { label: 'Yes', value: 'yes' },
-        { label: 'No', value: 'no' },
-      ] },
-      { name: 'witnesses', label: 'Do you have witnesses?', type: 'radio', options: [
-        { label: 'Yes', value: 'yes' },
-        { label: 'No', value: 'no' },
-      ] },
+      {
+        name: 'complaintFiled', label: 'Have you filed an internal complaint?', type: 'radio', required: true, options: [
+          { label: 'Yes', value: 'yes' },
+          { label: 'No', value: 'no' },
+        ]
+      },
+      {
+        name: 'witnesses', label: 'Do you have witnesses?', type: 'radio', options: [
+          { label: 'Yes', value: 'yes' },
+          { label: 'No', value: 'no' },
+        ]
+      },
       { name: 'problemDescription', label: 'Detailed description of the incident', type: 'textarea', required: true },
       { name: 'consent', label: 'I agree to the terms and conditions', type: 'checkbox', required: true },
       { name: 'privacyConsent', label: 'I accept the privacy policy', type: 'checkbox', required: true },
@@ -626,22 +664,28 @@ export const services: Service[] = [
       { name: 'dob', label: 'Date of Birth', type: 'date', required: true },
       { name: 'creditorName', label: 'Name of creditor/bank', type: 'text', required: true },
       { name: 'debtAmount', label: 'Total debt amount (₹)', type: 'number', required: true },
-      { name: 'assetType', label: 'Type of asset at risk', type: 'checkbox', required: true, options: [
-        { label: 'Residential property', value: 'residential' },
-        { label: 'Commercial property', value: 'commercial' },
-        { label: 'Vehicle', value: 'vehicle' },
-        { label: 'Bank account', value: 'bank-account' },
-        { label: 'Business assets', value: 'business-assets' },
-      ] },
-      { name: 'sarfaesiNotice', label: 'Have you received SARFAESI notice?', type: 'radio', required: true, options: [
-        { label: 'Yes', value: 'yes' },
-        { label: 'No', value: 'no' },
-      ] },
+      {
+        name: 'assetType', label: 'Type of asset at risk', type: 'checkbox', required: true, options: [
+          { label: 'Residential property', value: 'residential' },
+          { label: 'Commercial property', value: 'commercial' },
+          { label: 'Vehicle', value: 'vehicle' },
+          { label: 'Bank account', value: 'bank-account' },
+          { label: 'Business assets', value: 'business-assets' },
+        ]
+      },
+      {
+        name: 'sarfaesiNotice', label: 'Have you received SARFAESI notice?', type: 'radio', required: true, options: [
+          { label: 'Yes', value: 'yes' },
+          { label: 'No', value: 'no' },
+        ]
+      },
       { name: 'noticeDate', label: 'Date of SARFAESI notice', type: 'date' },
-      { name: 'legalAction', label: 'Have you filed any legal challenge?', type: 'radio', options: [
-        { label: 'Yes', value: 'yes' },
-        { label: 'No', value: 'no' },
-      ] },
+      {
+        name: 'legalAction', label: 'Have you filed any legal challenge?', type: 'radio', options: [
+          { label: 'Yes', value: 'yes' },
+          { label: 'No', value: 'no' },
+        ]
+      },
       { name: 'problemDescription', label: 'Your situation and background', type: 'textarea', required: true },
       { name: 'consent', label: 'I agree to the terms and conditions', type: 'checkbox', required: true },
       { name: 'privacyConsent', label: 'I accept the privacy policy', type: 'checkbox', required: true },
@@ -684,24 +728,28 @@ export const services: Service[] = [
       { name: 'phone', label: 'Phone Number', type: 'tel', required: true },
       { name: 'email', label: 'Email Address', type: 'email', required: true },
       { name: 'dob', label: 'Date of Birth', type: 'date', required: true },
-      { name: 'problemTypes', label: 'Select all applicable issues', type: 'checkbox', required: true, options: [
-        { label: 'Credit report issues', value: 'credit-issues' },
-        { label: 'Loan/EMI stress', value: 'loan-stress' },
-        { label: 'Banking/card disputes', value: 'banking-disputes' },
-        { label: 'Insurance issues', value: 'insurance-issues' },
-        { label: 'Unclaimed money', value: 'unclaimed-money' },
-        { label: 'Cyber fraud', value: 'cyber-fraud' },
-        { label: 'Workplace issues', value: 'workplace-issues' },
-        { label: 'SARFAESI/Recovery actions', value: 'recovery-action' },
-        { label: 'Other', value: 'other' },
-      ] },
+      {
+        name: 'problemTypes', label: 'Select all applicable issues', type: 'checkbox', required: true, options: [
+          { label: 'Credit report issues', value: 'credit-issues' },
+          { label: 'Loan/EMI stress', value: 'loan-stress' },
+          { label: 'Banking/card disputes', value: 'banking-disputes' },
+          { label: 'Insurance issues', value: 'insurance-issues' },
+          { label: 'Unclaimed money', value: 'unclaimed-money' },
+          { label: 'Cyber fraud', value: 'cyber-fraud' },
+          { label: 'Workplace issues', value: 'workplace-issues' },
+          { label: 'SARFAESI/Recovery actions', value: 'recovery-action' },
+          { label: 'Other', value: 'other' },
+        ]
+      },
       { name: 'totalDebt', label: 'Approximate total debt/financial exposure (₹)', type: 'number' },
-      { name: 'urgencyLevel', label: 'Urgency level', type: 'radio', required: true, options: [
-        { label: 'Immediate (within 7 days)', value: 'immediate' },
-        { label: 'Urgent (within 1 month)', value: 'urgent' },
-        { label: 'High (within 3 months)', value: 'high' },
-        { label: 'Moderate (within 6 months)', value: 'moderate' },
-      ] },
+      {
+        name: 'urgencyLevel', label: 'Urgency level', type: 'radio', required: true, options: [
+          { label: 'Immediate (within 7 days)', value: 'immediate' },
+          { label: 'Urgent (within 1 month)', value: 'urgent' },
+          { label: 'High (within 3 months)', value: 'high' },
+          { label: 'Moderate (within 6 months)', value: 'moderate' },
+        ]
+      },
       { name: 'problemDescription', label: 'Detailed description of all financial problems', type: 'textarea', required: true },
       { name: 'consent', label: 'I agree to the terms and conditions', type: 'checkbox', required: true },
       { name: 'privacyConsent', label: 'I accept the privacy policy', type: 'checkbox', required: true },

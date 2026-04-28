@@ -8,6 +8,8 @@ import { Menu, X, Phone } from "lucide-react"
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Solution", href: "/services" },
+  { label: "Result", href: "/result" },
+  { label: "Blog", href: "/blog" },
   { label: "About Us", href: "/about-us" },
   { label: "Why Us", href: "/#why-us" },
   { label: "Contact", href: "/contact-us" },
@@ -74,6 +76,12 @@ export default function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
+          <Link
+            href="/hiring"
+            className="px-5 py-2.5 rounded-lg bg-emerald-500 text-white text-sm font-bold hover:bg-emerald-600 transition-all duration-200 shadow-sm hover:shadow-md"
+          >
+            Hiring
+          </Link>
           <a
             href="/know-your-cibil-score"
             className="px-5 py-2.5 rounded-lg bg-[#F0A500] text-[#1B3F8B] text-sm font-bold hover:bg-[#F7C04A] transition-all duration-200 shadow-sm hover:shadow-md w-full text-center"
@@ -105,6 +113,13 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <a
+            href="/hiring"
+            className="text-center px-5 py-2.5 rounded-lg bg-emerald-500 text-white text-sm font-bold"
+            onClick={() => setIsOpen(false)}
+          >
+            Hiring
+          </a>
           <a
             href="#contact"
             className="text-center px-5 py-2.5 rounded-lg bg-[#F0A500] text-[#1B3F8B] text-sm font-bold"
