@@ -2,14 +2,12 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { BreadcrumbNav, type BreadcrumbItem } from './breadcrumb-nav'
 
 interface ServiceHeroProps {
   title: string
   subtitle: string
   description: string
   heroImage: string
-  breadcrumbs: BreadcrumbItem[]
   onGetHelpClick?: () => void
 }
 
@@ -18,7 +16,6 @@ export function ServiceHero({
   subtitle,
   description,
   heroImage,
-  breadcrumbs,
   onGetHelpClick,
 }: ServiceHeroProps) {
   const containerVariants = {
@@ -47,10 +44,7 @@ export function ServiceHero({
           className="grid md:grid-cols-2 gap-12 items-center"
         >
           {/* Left Content */}
-          <div>
-            <BreadcrumbNav items={breadcrumbs} />
-
-            <motion.h1
+          <div>            <motion.h1
               variants={itemVariants}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-4 text-balance leading-tight"
             >
@@ -79,7 +73,7 @@ export function ServiceHero({
                 onClick={onGetHelpClick}
                 className="px-6 sm:px-8 py-3 sm:py-4 bg-[#F0A500] text-[#1B3F8B] font-bold rounded-xl text-sm sm:text-base hover:bg-[#F7C04A] transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 transform"
               >
-                CRM form
+                Contact Us
               </button>
               <a
                 href="/services"

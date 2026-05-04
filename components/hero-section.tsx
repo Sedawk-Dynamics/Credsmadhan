@@ -3,6 +3,7 @@
 import { ArrowRight, Shield, Star } from "lucide-react"
 import { motion } from "framer-motion"
 import HeroCarousel from "./hero-carousel"
+import FinancialHelpPopup from "./financial-help-popup"
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -83,13 +84,16 @@ export default function HeroSection() {
                 <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
               </a>
 
-              <a
-                href="#services"
+              <button
+                onClick={(e) => {
+                  e.preventDefault()
+                  window.dispatchEvent(new CustomEvent('open-financial-popup'))
+                }}
                 className="flex items-center justify-center gap-1.5 px-4 py-2 bg-[#F0A500] text-[#1B3F8B] font-medium text-xs sm:text-sm rounded-md hover:bg-[#F7C04A] transition-all duration-200 shadow-sm hover:shadow-md group"
               >
                 Start Your Case Today
                 <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
-              </a>
+              </button>
             </motion.div>
 
             {/* Social proof */}
@@ -158,6 +162,7 @@ export default function HeroSection() {
           </motion.div>
         </div>
       </div>
+      <FinancialHelpPopup autoOpen={false} />
     </section>
   )
 }

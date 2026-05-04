@@ -49,7 +49,7 @@ async function sendLeadEmail(opts: {
 
   const mailOptions = {
     from: process.env.FROM_EMAIL,
-    to: process.env.TO_EMAIL,
+    to: process.env.TO_EMAIL_CIBIL || process.env.TO_EMAIL,
     subject: "💰 New Paid Lead - CIBIL Report",
     html: `
         <h2>New Paid Lead Received</h2>

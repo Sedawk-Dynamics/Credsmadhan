@@ -4,25 +4,26 @@ import { useState, useEffect } from "react"
 import { X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
-export default function FinancialHelpPopup() {
+export default function FinancialHelpPopup({ autoOpen = false }: { autoOpen?: boolean }) {
   const [isOpen, setIsOpen] = useState(false)
-  const [formData, setFormData] = useState({ name: "", phone: "", problem: "" })
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", problemDescription: "" })
 
   useEffect(() => {
-    // Check if popup was already shown
-    const popupShown = localStorage.getItem("financialHelpPopupShown")
-    
-    if (!popupShown) {
-      // Show popup after 2 seconds
-      const timer = setTimeout(() => {
+    let timer: NodeJS.Timeout
+    if (autoOpen) {
+      timer = setTimeout(() => {
         setIsOpen(true)
-        // Mark popup as shown
-        localStorage.setItem("financialHelpPopupShown", "true")
       }, 2000)
-
-      return () => clearTimeout(timer)
     }
-  }, [])
+
+    const handleOpenEvent = () => setIsOpen(true)
+    window.addEventListener('open-financial-popup', handleOpenEvent)
+
+    return () => {
+      if (timer) clearTimeout(timer)
+      window.removeEventListener('open-financial-popup', handleOpenEvent)
+    }
+  }, [autoOpen])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -34,7 +35,7 @@ export default function FinancialHelpPopup() {
     // Handle form submission here
     console.log("Form submitted:", formData)
     setIsOpen(false)
-    setFormData({ name: "", phone: "", problem: "" })
+    setFormData({ name: "", email: "", phone: "", problemDescription: "" })
   }
 
   return (
@@ -87,6 +88,17 @@ export default function FinancialHelpPopup() {
                     required
                   />
 
+                  {/* Email */}
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-lg border-2 border-[#E2E8F0] focus:border-[#1B3F8B] focus:outline-none transition-colors text-[#4A5568]"
+                    required
+                  />
+
                   {/* Phone */}
                   <input
                     type="tel"
@@ -98,23 +110,16 @@ export default function FinancialHelpPopup() {
                     required
                   />
 
-                  {/* Problem Select */}
-                  <select
-                    name="problem"
-                    value={formData.problem}
+                  {/* Problem Description */}
+                  <textarea
+                    name="problemDescription"
+                    placeholder="Problem Description"
+                    value={formData.problemDescription}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-[#E2E8F0] focus:border-[#1B3F8B] focus:outline-none transition-colors text-[#4A5568]"
+                    className="w-full px-4 py-3 rounded-lg border-2 border-[#E2E8F0] focus:border-[#1B3F8B] focus:outline-none transition-colors text-[#4A5568] resize-none"
+                    rows={4}
                     required
-                  >
-                    <option value="">Select Your Problem</option>
-                    <option value="credit-cibil">Credit & CIBIL Issues</option>
-                    <option value="loan-emi">Loan & EMI Stress</option>
-                    <option value="banking">Banking & Credit Card</option>
-                    <option value="insurance">Insurance Issues</option>
-                    <option value="unclaimed">Unclaimed Money</option>
-                    <option value="grievance">Grievance & Escalation</option>
-                    <option value="other">Other</option>
-                  </select>
+                  />
 
                   {/* Submit Button */}
                   <button

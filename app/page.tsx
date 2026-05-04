@@ -23,7 +23,6 @@ export default function Home() {
       {/* <CtaSection /> */}
       <Footer />
       <WhatsAppButton />
-      <FinancialHelpPopup />
     </main>
   )
 }

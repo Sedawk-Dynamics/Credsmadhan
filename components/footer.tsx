@@ -66,11 +66,11 @@ export default function Footer() {
             className="lg:col-span-1 flex flex-col gap-5"
           >
             <Image
-              src="/images/credsmadhan-logo.png"
+              src="/images/credsmadhan-horizontal-logo.png"
               alt="Credsmadhan"
-              width={220}
+              width={320}
               height={100}
-              className="h-20 w-auto object-contain brightness-0 invert"
+              className="h-20 w-auto object-contain bg-white/10 p-2 rounded-lg backdrop-blur-sm"
             />
             <p className="text-sm text-white/60 leading-relaxed">
               India&apos;s trusted financial problem resolution platform. Process-driven, transparent, and honest assistance for credit, CIBIL, banking, and insurance issues.
@@ -182,6 +182,14 @@ export default function Footer() {
               <p className="text-xs font-semibold text-white/50 uppercase tracking-widest mb-2">Working Hours</p>
               <p className="text-sm text-white/70">Monday – Saturday</p>
               <p className="text-sm text-white/70">10:00 AM – 7:00 PM</p>
+            </div>
+            {/* Newsletter */}
+            <h4 className="font-semibold text-white text-base mt-8 mb-4 border-b border-white/10 pb-3">
+              Newsletter
+            </h4>
+            <div className="flex gap-2">
+              <input type="email" placeholder="Your Email" className="bg-white/10 text-white px-3 py-2 rounded-lg text-sm w-full outline-none focus:border-[#F0A500] border border-transparent" />
+              <button className="bg-[#F0A500] text-[#1B3F8B] px-4 py-2 rounded-lg font-bold text-sm hover:bg-[#F7C04A] transition-colors">Subscribe</button>
             </div>
           </motion.div>
         </div>

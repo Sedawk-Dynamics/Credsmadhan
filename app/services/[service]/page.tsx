@@ -8,10 +8,8 @@ import { serviceSchemas } from '@/lib/validation'
 import { ServiceHero } from '@/components/service-hero'
 import { ServiceFormModal } from '@/components/service-form-modal'
 import { ServiceFAQ } from '@/components/service-faq'
-import { BreadcrumbNav } from '@/components/breadcrumb-nav'
-import CrmFormSection from '@/components/crm-form-section'
 import { CheckCircle, TrendingUp } from 'lucide-react'
-import type { BreadcrumbItem } from '@/components/breadcrumb-nav'
+import FinancialHelpPopup from '@/components/financial-help-popup'
 
 export default function ServicePage() {
   const params = useParams()
@@ -62,19 +60,10 @@ export default function ServicePage() {
 
   const schema = serviceSchemas[service.slug as keyof typeof serviceSchemas]
   const handleGetHelpClick = () => {
-    const section = document.getElementById('crm-form-section')
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' })
-    } else {
-      window.location.href = '#crm-form-section'
-    }
+    window.location.href = '/contact-us'
   }
 
-  const breadcrumbs: BreadcrumbItem[] = [
-    { label: 'Home', href: '/' },
-    { label: 'Services', href: '/#services' },
-    { label: service.title },
-  ]
+
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -104,7 +93,6 @@ export default function ServicePage() {
           subtitle={service.shortDescription}
           description={service.problemStatement}
           heroImage={service.heroImage}
-          breadcrumbs={breadcrumbs}
           onGetHelpClick={handleGetHelpClick}
         />
       </section>
@@ -305,14 +293,6 @@ export default function ServicePage() {
         </div>
       </section>
 
-      {/* CRM Form Section */}
-      <CrmFormSection
-        id="crm-form-section"
-        title="CRM form"
-        subtitle="Expert Financial Assistance"
-        description="Fill out the form below and our team will get back to you within 24 hours with a customized solution for your financial problem."
-        formUrl={service.crmFormUrl}
-      />
 
       {/* Bottom CTA - Premium */}
       <section className="relative py-12 px-4 overflow-hidden bg-gradient-to-br from-[#1B3F8B] to-[#2a52a8]">
@@ -341,8 +321,14 @@ export default function ServicePage() {
                 Start your Case
               </button>
               <a
+                href="tel:+919053903719"
+                className="flex items-center justify-center px-8 py-4 bg-emerald-500 text-white font-bold rounded-xl hover:bg-emerald-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+              >
+                Expert Consultation
+              </a>
+              <a
                 href="/services"
-                className="px-8 py-4 bg-white/20 text-white font-bold rounded-xl hover:bg-white/30 transition-all duration-200 border border-white/30 hover:border-white/50"
+                className="flex items-center justify-center px-8 py-4 bg-white/20 text-white font-bold rounded-xl hover:bg-white/30 transition-all duration-200 border border-white/30 hover:border-white/50"
               >
                 Explore Other Services
               </a>
@@ -351,13 +337,14 @@ export default function ServicePage() {
         </div>
       </section>
 
-      {/* Form Modal */}
       <ServiceFormModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         service={service}
         schema={schema}
       />
+      
+      <FinancialHelpPopup autoOpen={true} />
     </main>
   )
 }

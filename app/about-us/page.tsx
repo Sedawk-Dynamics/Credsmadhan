@@ -5,6 +5,7 @@ import Footer from "@/components/footer"
 import { motion } from "framer-motion"
 import { CheckCircle2, Users, Target, Award } from "lucide-react"
 import Link from "next/link"
+import WhyUsSection from "@/components/why-us-section"
 
 export default function AboutUsPage() {
   const fadeInUp = {
@@ -81,75 +82,7 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-16 md:py-24 bg-[#F7F9FC]">
-        <div className="max-w-7xl mx-auto px-4">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-serif text-3xl md:text-4xl font-bold text-[#1B3F8B] text-center mb-12"
-          >
-            Why Choose Credsmadhan?
-          </motion.h2>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }}
-            className="grid md:grid-cols-3 gap-8"
-          >
-            {[
-              {
-                icon: Users,
-                title: "Expert Team",
-                description: "Experienced professionals with 10+ years in credit and banking resolution.",
-              },
-              {
-                icon: CheckCircle2,
-                title: "Process-Driven",
-                description: "Transparent, systematic approach to ensure consistent and reliable results.",
-              },
-              {
-                icon: Target,
-                title: "100% Confidential",
-                description: "Your financial data is secure with enterprise-grade encryption.",
-              },
-              {
-                icon: Award,
-                title: "Proven Track Record",
-                description: "Successfully resolved 500+ financial cases with 95% satisfaction.",
-              },
-              {
-                icon: CheckCircle2,
-                title: "No Hidden Fees",
-                description: "Complete transparency with clear breakdown of all charges.",
-              },
-              {
-                icon: Users,
-                title: "24/7 Support",
-                description: "Dedicated team available round-the-clock for your queries.",
-              },
-            ].map((item, i) => {
-              const Icon = item.icon
-              return (
-                <motion.div
-                  key={i}
-                  variants={fadeInUp}
-                  className="bg-white rounded-2xl p-6 border border-border hover:shadow-lg transition-all duration-300"
-                >
-                  <div className="w-12 h-12 rounded-lg bg-[#E0EAFF] flex items-center justify-center mb-4">
-                    <Icon size={24} className="text-[#1B3F8B]" />
-                  </div>
-                  <h3 className="font-semibold text-[#1B3F8B] text-lg mb-2">{item.title}</h3>
-                  <p className="text-[#4A5568] text-sm leading-relaxed">{item.description}</p>
-                </motion.div>
-              )
-            })}
-          </motion.div>
-        </div>
-      </section>
+      <WhyUsSection />
 
       {/* Our Values */}
       <section className="py-16 md:py-24">
