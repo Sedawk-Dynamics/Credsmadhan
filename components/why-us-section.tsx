@@ -33,7 +33,7 @@ const values = [
 export default function WhyUsSection() {
   return (
     <section id="why-us" className="py-16 bg-[#F7F9FC]">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* About + Why Us */}
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
@@ -103,8 +103,8 @@ export default function WhyUsSection() {
             </ul>
 
             <a
-              href="#contact"
-              className="self-start mt-2 px-6 py-3 bg-[#F0A500] text-[#1B3F8B] font-bold rounded-xl hover:bg-[#F7C04A] transition-colors shadow-md"
+              href="/contact-us"
+              className="w-full sm:w-auto text-center self-start mt-2 px-6 py-3 bg-[#F0A500] text-[#1B3F8B] font-bold rounded-xl hover:bg-[#F7C04A] transition-colors shadow-md"
             >
               Start Your Resolution Journey
             </a>
@@ -112,7 +112,7 @@ export default function WhyUsSection() {
         </div>
 
         {/* Mission / Vision / Values */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {values.map((v, i) => {
             const Icon = v.icon
             return (

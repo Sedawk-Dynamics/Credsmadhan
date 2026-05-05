@@ -29,7 +29,7 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center overflow-hidden bg-[#F7F9FC] pt-40 md:pt-48 pb-16"
+      className="relative min-h-screen flex items-center overflow-hidden bg-[#F7F9FC] pt-32 sm:pt-40 md:pt-48 pb-12 sm:pb-16"
     >
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -39,8 +39,8 @@ export default function HeroSection() {
         <div className="absolute bottom-1/4 left-0 w-full h-px bg-[#1B3F8B]/5" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 items-center">
 
           {/* Left Content */}
           <div className="flex flex-col gap-6">
@@ -53,7 +53,7 @@ export default function HeroSection() {
 
             {/* Headline */}
             <motion.div {...slideInRight(0.2)}>
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#1B3F8B] leading-tight text-balance">
+              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1B3F8B] leading-tight text-balance">
                 Cred Ki Baat,{" "}
                 <span className="text-[#F0A500] italic">Smadhan</span>{" "}
                 Ke Saath
@@ -75,13 +75,13 @@ export default function HeroSection() {
             </motion.div>
 
             {/* CTA Buttons */}
-            <motion.div {...slideInRight(0.4)} className="flex flex-col sm:flex-row gap-2 mt-2">
+            <motion.div {...slideInRight(0.4)} className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 sm:mt-6">
               <a
                 href="/contact-us"
-                className="flex items-center justify-center gap-1.5 px-4 py-2 bg-[#1B3F8B] text-white font-medium text-xs sm:text-sm rounded-md hover:bg-[#142f6b] transition-all duration-200 shadow-md hover:shadow-lg group"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-[#1B3F8B] text-white font-semibold text-sm sm:text-base rounded-xl hover:bg-[#142f6b] transition-all duration-200 shadow-lg hover:shadow-xl group"
               >
                 Book Case Review
-                <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </a>
 
               <button
@@ -89,10 +89,10 @@ export default function HeroSection() {
                   e.preventDefault()
                   window.dispatchEvent(new CustomEvent('open-financial-popup'))
                 }}
-                className="flex items-center justify-center gap-1.5 px-4 py-2 bg-[#F0A500] text-[#1B3F8B] font-medium text-xs sm:text-sm rounded-md hover:bg-[#F7C04A] transition-all duration-200 shadow-sm hover:shadow-md group"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-[#F0A500] text-[#1B3F8B] font-semibold text-sm sm:text-base rounded-xl hover:bg-[#F7C04A] transition-all duration-200 shadow-lg hover:shadow-xl group"
               >
                 Start Your Case Today
-                <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </button>
             </motion.div>
 

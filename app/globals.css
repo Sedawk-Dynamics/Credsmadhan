@@ -4,6 +4,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   /* Credsmadhan Brand Palette - Enhanced */
   --brand-blue: #1B3F8B;
@@ -13,14 +18,14 @@
   --brand-gold: #F0A500;
   --brand-gold-light: #F7C04A;
   --brand-gold-pale: #FEF3D0;
-  
+
   /* Vibrant Accent Colors - For urgency and engagement */
   --accent-green: #10B981;
   --accent-green-light: #34D399;
   --accent-red: #EF4444;
   --accent-orange: #FB923C;
   --accent-purple: #8B5CF6;
-  
+
   /* Supporting Grays */
   --gray-50: #F9FAFB;
   --gray-100: #F3F4F6;
@@ -150,9 +155,11 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   html {
     scroll-behavior: smooth;
   }
+
   body {
     @apply bg-background text-foreground;
   }

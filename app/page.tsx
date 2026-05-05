@@ -12,7 +12,7 @@ import FinancialHelpPopup from "@/components/financial-help-popup"
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-hidden">
       <Navbar />
       <HeroSection />
       <StatsSection />

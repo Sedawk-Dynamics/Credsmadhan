@@ -36,8 +36,10 @@ const socialLinks = [
 export default function Footer() {
   return (
     <footer className="bg-white text-[#0E2454] border-t-4 border-[#1B3F8B]">
-      <div className="max-w-7xl mx-auto px-4 py-10">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      {/* Main */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-start">
 
           {/* Brand */}
           <motion.div
@@ -45,21 +47,21 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col gap-3"
+            className="flex flex-col gap-2 mt-0"
           >
             <Image
               src="/images/credsmadhan-horizontal-logo.png"
               alt="Credsmadhan"
               width={320}
               height={100}
-              className="h-28 w-auto object-contain"
+              className="h-20 md:h-24 w-auto object-contain block -mt-3 md:-mt-4"
             />
 
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 leading-relaxed">
               India's trusted financial problem resolution platform. Transparent, process-driven support for credit, banking, and insurance issues.
             </p>
 
-            <div className="flex flex-col gap-2 text-sm">
+            <div className="flex flex-col gap-1.5 text-sm">
               <a href="tel:9053903719" className="flex items-center gap-2 text-gray-700 hover:text-[#F0A500]">
                 <Phone size={14} className="text-[#F0A500]" />
                 +91 9053903719
@@ -83,9 +85,9 @@ export default function Footer() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2.5 bg-gray-100 rounded-full hover:bg-[#F0A500] text-[#0E2454] hover:text-white transition"
+                    className="p-2 bg-gray-100 rounded-full hover:bg-[#F0A500] text-[#0E2454] hover:text-white transition"
                   >
-                    <Icon size={16} />
+                    <Icon size={15} />
                   </a>
                 )
               })}
@@ -98,8 +100,10 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h4 className="font-semibold mb-4 border-b border-gray-200 pb-2">Our Solutions</h4>
-            <ul className="space-y-2">
+            <h4 className="font-semibold mb-3 border-b border-gray-200 pb-1">
+              Our Solutions
+            </h4>
+            <ul className="space-y-1.5">
               {services.map((s) => (
                 <li key={s.slug}>
                   <a href={`/services/${s.slug}`} className="text-sm text-gray-600 hover:text-[#F0A500]">
@@ -116,8 +120,10 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className="font-semibold mb-4 border-b border-gray-200 pb-2">Quick Links</h4>
-            <ul className="space-y-2">
+            <h4 className="font-semibold mb-3 border-b border-gray-200 pb-1">
+              Quick Links
+            </h4>
+            <ul className="space-y-1.5">
               {quickLinks.map((l) => (
                 <li key={l.label}>
                   <a href={l.href} className="text-sm text-gray-600 hover:text-[#F0A500]">
@@ -134,22 +140,25 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h4 className="font-semibold mb-4 border-b border-gray-200 pb-2">Get Free Guidance</h4>
-            <p className="text-sm text-gray-600 mb-4">
+            <h4 className="font-semibold mb-3 border-b border-gray-200 pb-1">
+              Get Free Guidance
+            </h4>
+
+            <p className="text-sm text-gray-600 mb-3">
               Have a financial issue? Talk to our experts today.
             </p>
 
-            <a href="tel:9053903719" className="block text-center px-4 py-2 bg-[#F0A500] text-[#1B3F8B] font-bold rounded-lg hover:bg-[#F7C04A]">
+            <a href="tel:9053903719" className="block text-center px-4 py-2 bg-[#F0A500] text-[#1B3F8B] font-bold rounded-lg hover:bg-[#F7C04A] text-sm">
               Call Now
             </a>
 
-            <a href="mailto:support@credsmadhan.com" className="block text-center px-4 py-2 mt-2 border border-gray-300 text-gray-700 rounded-lg hover:border-[#F0A500] hover:text-[#F0A500]">
+            <a href="mailto:support@credsmadhan.com" className="block text-center px-4 py-2 mt-2 border border-gray-300 text-gray-700 rounded-lg hover:border-[#F0A500] hover:text-[#F0A500] text-sm">
               Email Us
             </a>
 
-            <div className="mt-2">
-              <p className="text-xs text-gray-500">Mon – Sat | 10:00 AM – 7:00 PM</p>
-            </div>
+            <p className="text-xs text-gray-500 mt-2">
+              Mon – Sat | 10:00 AM – 7:00 PM
+            </p>
 
             <div className="flex gap-2 mt-2">
               <input
@@ -157,7 +166,7 @@ export default function Footer() {
                 placeholder="Your Email"
                 className="bg-gray-100 px-3 py-2 text-sm rounded-lg w-full outline-none"
               />
-              <button className="bg-[#F0A500] px-4 py-2 rounded-lg font-bold text-[#1B3F8B] hover:bg-[#F7C04A]">
+              <button className="bg-[#F0A500] px-4 py-2 rounded-lg font-bold text-[#1B3F8B] text-sm hover:bg-[#F7C04A]">
                 Subscribe
               </button>
             </div>
@@ -167,18 +176,19 @@ export default function Footer() {
 
       {/* Disclaimer */}
       <div className="border-t border-gray-200 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <p className="text-xs text-gray-500 text-center">{disclaimer}</p>
         </div>
       </div>
 
       {/* Bottom */}
       <div className="border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between text-xs text-gray-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 gap-2">
           <span>© {new Date().getFullYear()} Credsmadhan</span>
           <span>Cred Ki Baat, Smadhan Ke Saath</span>
         </div>
       </div>
+
     </footer>
   )
 }

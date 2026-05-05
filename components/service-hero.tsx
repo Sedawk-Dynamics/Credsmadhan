@@ -73,7 +73,7 @@ export function ServiceHero({
                 onClick={onGetHelpClick}
                 className="px-6 sm:px-8 py-3 sm:py-4 bg-[#F0A500] text-[#1B3F8B] font-bold rounded-xl text-sm sm:text-base hover:bg-[#F7C04A] transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 transform"
               >
-                Contact Us
+                Get Expert consult
               </button>
               <a
                 href="/services"

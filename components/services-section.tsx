@@ -183,7 +183,7 @@ export default function ServicesSection() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#F0A500]/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#1B3F8B]/5 rounded-full blur-3xl" />
 
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header - Enhanced with urgency messaging */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -323,7 +323,7 @@ export default function ServicesSection() {
           </p>
           <Link
             href="/contact-us"
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-[#1B3F8B] to-[#2a52a8] text-white font-bold rounded-xl hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3.5 bg-gradient-to-r from-[#1B3F8B] to-[#2a52a8] text-white font-bold rounded-xl hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group"
           >
             <Lock size={18} />
             <span>Start your Case</span>

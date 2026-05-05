@@ -84,8 +84,8 @@ export default function HiringPage() {
       <Navbar />
 
       {/* Header Section */}
-      <section className="pt-32 pb-12 md:pt-40 md:pb-16 bg-gradient-to-br from-[#1B3F8B] to-[#2a52a8] text-white">
-        <div className="max-w-6xl mx-auto px-4">
+      <section className="pt-32 sm:pt-40 pb-16 sm:pb-24 bg-gradient-to-br from-[#1B3F8B] to-[#2a52a8] text-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -100,8 +100,8 @@ export default function HiringPage() {
       </section>
 
       {/* About Company Section */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
+      <section className="py-12 sm:py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -134,8 +134,8 @@ export default function HiringPage() {
       </section>
 
       {/* Open Positions Section */}
-      <section className="py-12 md:py-16 bg-[#F9FAFB]">
-        <div className="max-w-6xl mx-auto px-4">
+      <section className="py-12 sm:py-16 bg-[#F9FAFB]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -164,13 +164,13 @@ export default function HiringPage() {
                   </div>
                   <a
                     href={`mailto:careers@credsmadhan.com?subject=Application for ${job.title}`}
-                    className="inline-block px-6 py-2 bg-[#F0A500] hover:bg-[#FB923C] text-white font-semibold rounded-lg transition-colors whitespace-nowrap"
+                    className="w-full sm:w-auto text-center inline-block px-6 py-2.5 bg-[#F0A500] hover:bg-[#FB923C] text-white font-semibold rounded-lg transition-colors whitespace-nowrap"
                   >
                     Apply Now
                   </a>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4 py-4 border-t border-b border-[#E2E8F0]">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-4 py-4 border-t border-b border-[#E2E8F0]">
                   <div className="flex items-center gap-2 text-gray-600">
                     <MapPinIcon size={16} className="text-[#F0A500]" />
                     <span className="text-sm">{job.location}</span>
@@ -209,8 +209,8 @@ export default function HiringPage() {
       </section>
 
       {/* Application Process Section */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
+      <section className="py-12 sm:py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -239,8 +239,8 @@ export default function HiringPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 md:py-16 bg-gradient-to-br from-[#1B3F8B] to-[#2a52a8] text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      <section className="py-12 sm:py-16 bg-gradient-to-br from-[#1B3F8B] to-[#2a52a8] text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -253,7 +253,7 @@ export default function HiringPage() {
             </p>
             <a
               href="mailto:careers@credsmadhan.com"
-              className="inline-block px-8 py-3 bg-[#F0A500] hover:bg-[#FB923C] text-white font-semibold rounded-lg transition-colors"
+              className="w-full sm:w-auto inline-block px-8 py-3.5 bg-[#F0A500] hover:bg-[#FB923C] text-white font-semibold rounded-lg transition-colors"
             >
               Send Your Resume
             </a>

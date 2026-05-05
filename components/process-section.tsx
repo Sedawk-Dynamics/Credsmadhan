@@ -53,7 +53,7 @@ export default function ProcessSection() {
       <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/4" />
       <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-[#F0A500]/10 translate-y-1/2 -translate-x-1/4" />
 
-      <div className="relative max-w-7xl mx-auto px-4">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -122,8 +122,8 @@ export default function ProcessSection() {
           className="text-center mt-10"
         >
           <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[#F0A500] text-[#1B3F8B] font-bold rounded-xl hover:bg-[#F7C04A] transition-colors shadow-lg shadow-[#F0A500]/20 text-sm"
+            href="/contact-us"
+            className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-8 py-4 bg-[#F0A500] text-[#1B3F8B] font-bold rounded-xl hover:bg-[#F7C04A] transition-colors shadow-lg shadow-[#F0A500]/20 text-sm"
           >
             Start Your Resolution Now
           </a>

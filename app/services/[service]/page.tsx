@@ -60,7 +60,7 @@ export default function ServicePage() {
 
   const schema = serviceSchemas[service.slug as keyof typeof serviceSchemas]
   const handleGetHelpClick = () => {
-    window.location.href = '/contact-us'
+    window.dispatchEvent(new CustomEvent('open-financial-popup'))
   }
 
 
@@ -98,7 +98,7 @@ export default function ServicePage() {
       </section>
 
       {/* Solution Overview - Enhanced Grid */}
-      <section id="how-we-help-you" className="py-12 px-4">
+      <section id="how-we-help-you" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -151,7 +151,7 @@ export default function ServicePage() {
       </section>
 
       {/* Process Timeline - Redesigned */}
-      <section className="py-12 px-4 bg-gradient-to-b from-[#F9FAFB] to-white">
+      <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#F9FAFB] to-white">
         <div className="container mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -218,7 +218,7 @@ export default function ServicePage() {
       </section>
 
       {/* Success Metrics - Premium Cards */}
-      <section className="py-12 px-4">
+      <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -271,7 +271,7 @@ export default function ServicePage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-12 px-4 bg-gradient-to-b from-white to-[#F9FAFB]">
+      <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-[#F9FAFB]">
         <div className="container mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -295,7 +295,7 @@ export default function ServicePage() {
 
 
       {/* Bottom CTA - Premium */}
-      <section className="relative py-12 px-4 overflow-hidden bg-gradient-to-br from-[#1B3F8B] to-[#2a52a8]">
+      <section className="relative py-12 sm:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-[#1B3F8B] to-[#2a52a8]">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#F0A500]/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
 
@@ -316,19 +316,19 @@ export default function ServicePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={() => (window.location.href = '/contact-us')}
-                className="px-8 py-4 bg-[#F0A500] text-[#1B3F8B] font-bold rounded-xl hover:bg-[#F7C04A] transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="w-full sm:w-auto px-8 py-4 bg-[#F0A500] text-[#1B3F8B] font-bold rounded-xl hover:bg-[#F7C04A] transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 Start your Case
               </button>
               <a
                 href="tel:+919053903719"
-                className="flex items-center justify-center px-8 py-4 bg-emerald-500 text-white font-bold rounded-xl hover:bg-emerald-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="w-full sm:w-auto flex items-center justify-center px-8 py-4 bg-emerald-500 text-white font-bold rounded-xl hover:bg-emerald-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 Expert Consultation
               </a>
               <a
                 href="/services"
-                className="flex items-center justify-center px-8 py-4 bg-white/20 text-white font-bold rounded-xl hover:bg-white/30 transition-all duration-200 border border-white/30 hover:border-white/50"
+                className="w-full sm:w-auto flex items-center justify-center px-8 py-4 bg-white/20 text-white font-bold rounded-xl hover:bg-white/30 transition-all duration-200 border border-white/30 hover:border-white/50"
               >
                 Explore Other Services
               </a>

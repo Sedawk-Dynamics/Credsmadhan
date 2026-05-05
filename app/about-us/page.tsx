@@ -29,8 +29,8 @@ export default function AboutUsPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-40 pb-20 md:pt-48 md:pb-32 bg-gradient-to-br from-[#1B3F8B] to-[#2a52a8] text-white">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="pt-32 sm:pt-40 pb-16 sm:pb-20 md:pt-48 md:pb-32 bg-gradient-to-br from-[#1B3F8B] to-[#2a52a8] text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -48,8 +48,8 @@ export default function AboutUsPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-20 md:py-32">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="pt-16 sm:pt-20 md:pt-32 pb-0">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -85,8 +85,8 @@ export default function AboutUsPage() {
       <WhyUsSection />
 
       {/* Our Values */}
-      <section className="py-20 md:py-32">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="pt-0 pb-16 sm:pb-20 md:pb-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -123,8 +123,8 @@ export default function AboutUsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 md:py-32 bg-[#1B3F8B] text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      <section className="py-16 sm:py-20 md:py-32 bg-[#1B3F8B] text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -145,8 +145,8 @@ export default function AboutUsPage() {
       </section>
 
       {/* About Arthvera LLP */}
-      <section className="py-20 md:py-32 bg-gradient-to-b from-white to-[#F9FAFB]">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="pt-16 sm:pt-20 md:pt-32 pb-8 sm:pb-12 md:pb-16 bg-gradient-to-b from-white to-[#F9FAFB]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -231,8 +231,8 @@ export default function AboutUsPage() {
       </section>
 
       {/* Startup India Section */}
-      <section className="py-20 md:py-32">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="pt-8 sm:pt-12 md:pt-16 pb-16 sm:pb-20 md:pb-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

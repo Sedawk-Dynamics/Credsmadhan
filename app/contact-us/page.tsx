@@ -70,8 +70,8 @@ export default function ContactUsPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pb-24 bg-gradient-to-br from-[#1B3F8B] to-[#2a52a8] text-white">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="pt-32 sm:pt-40 pb-16 sm:pb-24 bg-gradient-to-br from-[#1B3F8B] to-[#2a52a8] text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -87,9 +87,9 @@ export default function ContactUsPage() {
       </section>
 
       {/* Contact Info & Form */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-3 gap-8 md:gap-12">
+      <section className="py-16 sm:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
             {/* Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -289,15 +289,15 @@ export default function ContactUsPage() {
       </section>
 
       {/* Additional CTA */}
-      <section className="py-16 md:py-24 bg-[#F7F9FC]">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#1B3F8B] mb-6">Prefer to Talk Over the Phone?</h2>
+      <section className="py-16 sm:py-24 bg-[#F7F9FC]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#1B3F8B] mb-6 text-balance">Prefer to Talk Over the Phone?</h2>
           <p className="text-lg text-[#4A5568] mb-8 leading-relaxed">
             Our team is available for immediate consultation. Call us now for a free, personalized financial assessment.
           </p>
           <a
             href="tel:9053903719"
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#1B3F8B] text-white font-bold rounded-xl hover:bg-[#142f6b] transition-all duration-200 shadow-lg"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#1B3F8B] text-white font-bold rounded-xl hover:bg-[#142f6b] transition-all duration-200 shadow-lg"
           >
             <Phone size={18} />
             Call Now: +91 9053903719

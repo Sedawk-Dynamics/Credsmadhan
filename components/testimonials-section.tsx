@@ -33,7 +33,7 @@ const testimonials = [
 export default function TestimonialsSection() {
   return (
     <section id="about" className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -54,7 +54,7 @@ export default function TestimonialsSection() {
         </motion.div>
 
         {/* Testimonials grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
@@ -63,7 +63,7 @@ export default function TestimonialsSection() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.55, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -4, boxShadow: "0 16px 40px -10px rgba(27,63,139,0.12)" }}
-              className="relative bg-[#F7F9FC] rounded-2xl p-8 border border-border hover:border-[#F0A500]/30 transition-colors duration-300"
+              className="relative h-full flex flex-col bg-[#F7F9FC] rounded-2xl p-8 border border-border hover:border-[#F0A500]/30 transition-colors duration-300"
             >
               {/* Quote icon */}
               <Quote
@@ -82,7 +82,7 @@ export default function TestimonialsSection() {
                 &ldquo;{t.text}&rdquo;
               </p>
               {/* Author */}
-              <div className="flex items-center gap-3 mt-6 pt-5 border-t border-border">
+              <div className="flex items-center gap-3 mt-auto pt-5 border-t border-border">
                 <div
                   className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0"
                   style={{ backgroundColor: t.color }}

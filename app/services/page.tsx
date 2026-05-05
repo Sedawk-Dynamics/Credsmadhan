@@ -299,7 +299,7 @@ export default function OurServicesPage() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#F0A500]/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
 
-        <div className="max-w-7xl mx-auto px-4 w-full relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -325,7 +325,7 @@ export default function OurServicesPage() {
 
       {/* Services Grid */}
       <section className="py-24 px-4 bg-gradient-to-b from-white to-[#F9FAFB]">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -409,7 +409,7 @@ export default function OurServicesPage() {
 
       {/* Why Our Services Section */}
       <section className="py-20 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -465,7 +465,7 @@ export default function OurServicesPage() {
 
       {/* Bottom CTA */}
       <section className="py-20 px-4 bg-gradient-to-br from-[#1B3F8B] to-[#0F2856]">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -479,7 +479,7 @@ export default function OurServicesPage() {
             </p>
             <Link
               href="/contact-us"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#F0A500] hover:bg-[#F7C04A] text-[#1B3F8B] font-bold rounded-xl transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group"
+              className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-8 py-4 bg-[#F0A500] hover:bg-[#F7C04A] text-[#1B3F8B] font-bold rounded-xl transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group"
             >
               <span>Start your Case</span>
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
