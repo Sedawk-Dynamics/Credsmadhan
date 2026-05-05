@@ -22,75 +22,59 @@ const quickLinks = [
   { label: "Why Choose Us", href: "/#why-us" },
   { label: "Contact Us", href: "/contact-us" },
   { label: "Hiring", href: "/hiring" },
-  // { label: "Privacy Policy", href: "/privacy-policy" },
 ]
 
 const disclaimer = `Credsmadhan (Arthvera LLP) is a financial assistance and facilitation platform. We provide guidance and process-based support — we are not a bank, NBFC, or financial institution. We do not guarantee outcomes. All financial decisions should be made by the individual after independent assessment.`
 
 const socialLinks = [
-  {
-    icon: Facebook,
-    label: "Facebook",
-    url: "https://www.facebook.com/credsmadhan/"
-  },
-  {
-    icon: Instagram,
-    label: "Instagram",
-    url: "https://www.instagram.com/credsmadhan/"
-  },
-  {
-    icon: Twitter,
-    label: "Twitter",
-    url: "https://x.com/credsmadhan"
-  },
-  {
-    icon: Linkedin,
-    label: "LinkedIn",
-    url: "https://www.linkedin.com/company/credsmadhan/"
-  },
+  { icon: Facebook, label: "Facebook", url: "https://www.facebook.com/credsmadhan/" },
+  { icon: Instagram, label: "Instagram", url: "https://www.instagram.com/credsmadhan/" },
+  { icon: Twitter, label: "Twitter", url: "https://x.com/credsmadhan" },
+  { icon: Linkedin, label: "LinkedIn", url: "https://www.linkedin.com/company/credsmadhan/" },
 ]
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0E2454] text-white">
-      {/* Main footer */}
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+    <footer className="bg-white text-[#0E2454] border-t-4 border-[#1B3F8B]">
+      <div className="max-w-7xl mx-auto px-4 py-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-          {/* Brand column */}
+          {/* Brand */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-1 flex flex-col gap-5"
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col gap-3"
           >
             <Image
               src="/images/credsmadhan-horizontal-logo.png"
               alt="Credsmadhan"
               width={320}
               height={100}
-              className="h-20 w-auto object-contain bg-white/10 p-2 rounded-lg backdrop-blur-sm"
+              className="h-28 w-auto object-contain"
             />
-            <p className="text-sm text-white/60 leading-relaxed">
-              India&apos;s trusted financial problem resolution platform. Process-driven, transparent, and honest assistance for credit, CIBIL, banking, and insurance issues.
+
+            <p className="text-sm text-gray-600">
+              India's trusted financial problem resolution platform. Transparent, process-driven support for credit, banking, and insurance issues.
             </p>
+
             <div className="flex flex-col gap-2 text-sm">
-              <a href="tel:9053903719" className="flex items-center gap-2 text-white/70 hover:text-[#F0A500] transition-colors">
+              <a href="tel:9053903719" className="flex items-center gap-2 text-gray-700 hover:text-[#F0A500]">
                 <Phone size={14} className="text-[#F0A500]" />
                 +91 9053903719
               </a>
-              <a href="mailto:support@credsmadhan.com" className="flex items-center gap-2 text-white/70 hover:text-[#F0A500] transition-colors">
+              <a href="mailto:support@credsmadhan.com" className="flex items-center gap-2 text-gray-700 hover:text-[#F0A500]">
                 <Mail size={14} className="text-[#F0A500]" />
                 support@credsmadhan.com
               </a>
-              <div className="flex items-start gap-2 text-white/70">
-                <MapPin size={14} className="text-[#F0A500] mt-0.5 shrink-0" />
-                <span>New House No. 103, Lajpat Nagar, Near Community Centre, Gurugram – 122001, Haryana, India</span>
+              <div className="flex items-start gap-2 text-gray-700">
+                <MapPin size={14} className="text-[#F0A500] mt-0.5" />
+                Gurugram, Haryana, India
               </div>
             </div>
-            {/* Social Media Links */}
-            <div className="flex items-center gap-3 mt-6">
+
+            <div className="flex gap-3 mt-2">
               {socialLinks.map((social) => {
                 const Icon = social.icon
                 return (
@@ -99,8 +83,7 @@ export default function Footer() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2.5 bg-white/10 rounded-full hover:bg-[#F0A500] text-white hover:text-[#0E2454] transition-all duration-200 group"
-                    title={social.label}
+                    className="p-2.5 bg-gray-100 rounded-full hover:bg-[#F0A500] text-[#0E2454] hover:text-white transition"
                   >
                     <Icon size={16} />
                   </a>
@@ -113,18 +96,14 @@ export default function Footer() {
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h4 className="font-semibold text-white text-base mb-5 border-b border-white/10 pb-3">
-              Our Solutions
-            </h4>
-            <ul className="flex flex-col gap-2">
+            <h4 className="font-semibold mb-4 border-b border-gray-200 pb-2">Our Solutions</h4>
+            <ul className="space-y-2">
               {services.map((s) => (
                 <li key={s.slug}>
-                  <a href={`/services/${s.slug}`} className="text-sm text-white/60 hover:text-[#F0A500] transition-colors flex items-center gap-2">
-                    <span className="w-1 h-1 rounded-full bg-[#F0A500] shrink-0" />
-                    {s.name}
+                  <a href={`/services/${s.slug}`} className="text-sm text-gray-600 hover:text-[#F0A500]">
+                    • {s.name}
                   </a>
                 </li>
               ))}
@@ -135,82 +114,69 @@ export default function Footer() {
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className="font-semibold text-white text-base mb-5 border-b border-white/10 pb-3">
-              Quick Links
-            </h4>
-            <ul className="flex flex-col gap-2">
+            <h4 className="font-semibold mb-4 border-b border-gray-200 pb-2">Quick Links</h4>
+            <ul className="space-y-2">
               {quickLinks.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} className="text-sm text-white/60 hover:text-[#F0A500] transition-colors flex items-center gap-2">
-                    <span className="w-1 h-1 rounded-full bg-[#F0A500] shrink-0" />
-                    {l.label}
+                  <a href={l.href} className="text-sm text-gray-600 hover:text-[#F0A500]">
+                    • {l.label}
                   </a>
                 </li>
               ))}
             </ul>
           </motion.div>
 
-          {/* CTA / Hours */}
+          {/* CTA */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h4 className="font-semibold text-white text-base mb-5 border-b border-white/10 pb-3">
-              Get Free Guidance
-            </h4>
-            <p className="text-sm text-white/60 mb-4 leading-relaxed">
-              Have a credit or financial issue? Reach out to us for a free initial consultation.
+            <h4 className="font-semibold mb-4 border-b border-gray-200 pb-2">Get Free Guidance</h4>
+            <p className="text-sm text-gray-600 mb-4">
+              Have a financial issue? Talk to our experts today.
             </p>
-            <a
-              href="tel:9053903719"
-              className="block text-center px-5 py-3 bg-[#F0A500] text-[#1B3F8B] font-bold rounded-xl hover:bg-[#F7C04A] transition-colors text-sm"
-            >
-              Call: +91 9053903719
+
+            <a href="tel:9053903719" className="block text-center px-4 py-2 bg-[#F0A500] text-[#1B3F8B] font-bold rounded-lg hover:bg-[#F7C04A]">
+              Call Now
             </a>
-            <a
-              href="mailto:support@credsmadhan.com"
-              className="block text-center px-5 py-3 mt-2 border border-white/20 text-white/70 rounded-xl hover:border-[#F0A500] hover:text-[#F0A500] transition-colors text-sm"
-            >
+
+            <a href="mailto:support@credsmadhan.com" className="block text-center px-4 py-2 mt-2 border border-gray-300 text-gray-700 rounded-lg hover:border-[#F0A500] hover:text-[#F0A500]">
               Email Us
             </a>
-            <div className="mt-5">
-              <p className="text-xs font-semibold text-white/50 uppercase tracking-widest mb-2">Working Hours</p>
-              <p className="text-sm text-white/70">Monday – Saturday</p>
-              <p className="text-sm text-white/70">10:00 AM – 7:00 PM</p>
+
+            <div className="mt-2">
+              <p className="text-xs text-gray-500">Mon – Sat | 10:00 AM – 7:00 PM</p>
             </div>
-            {/* Newsletter */}
-            <h4 className="font-semibold text-white text-base mt-8 mb-4 border-b border-white/10 pb-3">
-              Newsletter
-            </h4>
-            <div className="flex gap-2">
-              <input type="email" placeholder="Your Email" className="bg-white/10 text-white px-3 py-2 rounded-lg text-sm w-full outline-none focus:border-[#F0A500] border border-transparent" />
-              <button className="bg-[#F0A500] text-[#1B3F8B] px-4 py-2 rounded-lg font-bold text-sm hover:bg-[#F7C04A] transition-colors">Subscribe</button>
+
+            <div className="flex gap-2 mt-2">
+              <input
+                type="email"
+                placeholder="Your Email"
+                className="bg-gray-100 px-3 py-2 text-sm rounded-lg w-full outline-none"
+              />
+              <button className="bg-[#F0A500] px-4 py-2 rounded-lg font-bold text-[#1B3F8B] hover:bg-[#F7C04A]">
+                Subscribe
+              </button>
             </div>
           </motion.div>
         </div>
       </div>
 
       {/* Disclaimer */}
-      <div className="border-t border-white/10 bg-[#0b1c3e]">
-        <div className="max-w-7xl mx-auto px-4 py-5">
-          <p className="text-xs text-white/40 leading-relaxed text-center">{disclaimer}</p>
+      <div className="border-t border-gray-200 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <p className="text-xs text-gray-500 text-center">{disclaimer}</p>
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-white/5 bg-[#091628]">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="text-xs text-white/40">
-            &copy; {new Date().getFullYear()} Credsmadhan – Arthvera LLP. All rights reserved.
-          </p>
-          <p className="text-xs text-white/40">
-            Cred Ki Baat, Smadhan Ke Saath
-          </p>
+      {/* Bottom */}
+      <div className="border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between text-xs text-gray-500">
+          <span>© {new Date().getFullYear()} Credsmadhan</span>
+          <span>Cred Ki Baat, Smadhan Ke Saath</span>
         </div>
       </div>
     </footer>

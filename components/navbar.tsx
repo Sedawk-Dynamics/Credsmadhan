@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
 import { Menu, X, Phone } from "lucide-react"
@@ -18,6 +19,8 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname()
+  const isHome = pathname === "/"
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -26,12 +29,13 @@ export default function Navbar() {
   }, [])
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-          ? "bg-white shadow-md py-2"
-          : "bg-white/95 backdrop-blur-sm py-3"
-        }`}
-    >
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+            ? "bg-white shadow-md py-2"
+            : "bg-white/95 backdrop-blur-sm py-3"
+          }`}
+      >
       {/* Top Bar */}
       <div className="bg-[#1B3F8B] text-white text-xs py-1 px-4 hidden md:block">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
@@ -181,6 +185,10 @@ export default function Navbar() {
           </Link>
         </div>
       )}
-    </header>
+      </header>
+
+      {/* Spacer to act as margin bottom for the fixed header on subpages */}
+      {!isHome && <div className="h-8 md:h-12 w-full shrink-0" />}
+    </>
   )
 }

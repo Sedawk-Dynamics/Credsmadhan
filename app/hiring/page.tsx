@@ -84,7 +84,7 @@ export default function HiringPage() {
       <Navbar />
 
       {/* Header Section */}
-      <section className="py-12 md:py-16 bg-gradient-to-br from-[#1B3F8B] to-[#2a52a8] text-white">
+      <section className="pt-32 pb-12 md:pt-40 md:pb-16 bg-gradient-to-br from-[#1B3F8B] to-[#2a52a8] text-white">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

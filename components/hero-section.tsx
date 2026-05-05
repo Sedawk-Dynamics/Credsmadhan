@@ -29,7 +29,7 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center overflow-hidden bg-[#F7F9FC] pt-28 pb-16"
+      className="relative min-h-screen flex items-center overflow-hidden bg-[#F7F9FC] pt-40 md:pt-48 pb-16"
     >
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -77,7 +77,7 @@ export default function HeroSection() {
             {/* CTA Buttons */}
             <motion.div {...slideInRight(0.4)} className="flex flex-col sm:flex-row gap-2 mt-2">
               <a
-                href="#contact"
+                href="/contact-us"
                 className="flex items-center justify-center gap-1.5 px-4 py-2 bg-[#1B3F8B] text-white font-medium text-xs sm:text-sm rounded-md hover:bg-[#142f6b] transition-all duration-200 shadow-md hover:shadow-lg group"
               >
                 Book Case Review

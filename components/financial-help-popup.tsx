@@ -13,7 +13,7 @@ export default function FinancialHelpPopup({ autoOpen = false }: { autoOpen?: bo
     if (autoOpen) {
       timer = setTimeout(() => {
         setIsOpen(true)
-      }, 2000)
+      }, 10000)
     }
 
     const handleOpenEvent = () => setIsOpen(true)

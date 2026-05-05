@@ -29,7 +29,7 @@ export default function AboutUsPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pb-24 bg-gradient-to-br from-[#1B3F8B] to-[#2a52a8] text-white">
+      <section className="pt-40 pb-20 md:pt-48 md:pb-32 bg-gradient-to-br from-[#1B3F8B] to-[#2a52a8] text-white">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -48,7 +48,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-16 md:py-24">
+      <section className="py-20 md:py-32">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             variants={containerVariants}
@@ -85,7 +85,7 @@ export default function AboutUsPage() {
       <WhyUsSection />
 
       {/* Our Values */}
-      <section className="py-16 md:py-24">
+      <section className="py-20 md:py-32">
         <div className="max-w-7xl mx-auto px-4">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -123,7 +123,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 bg-[#1B3F8B] text-white">
+      <section className="py-20 md:py-32 bg-[#1B3F8B] text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -145,7 +145,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* About Arthvera LLP */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-white to-[#F9FAFB]">
+      <section className="py-20 md:py-32 bg-gradient-to-b from-white to-[#F9FAFB]">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -231,7 +231,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* Startup India Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-20 md:py-32">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
