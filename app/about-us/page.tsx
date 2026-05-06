@@ -158,7 +158,7 @@ export default function AboutUsPage() {
               About <span className="text-[#1B3F8B]">Arthvera LLP</span>
             </h2>
             <p className="text-xl text-[#4A5568] max-w-3xl mx-auto">
-              The legal entity behind FinSmadhan - India&apos;s leading financial recovery platform
+              The legal entity behind Credsmadhan - India&apos;s leading financial recovery platform
             </p>
           </motion.div>
 
