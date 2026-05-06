@@ -221,7 +221,7 @@ export default function AboutUsPage() {
                     <h4 className="text-xl font-bold">Brand Identity</h4>
                   </div>
                   <p className="text-white/90">
-                    FinSmadhan is the registered brand name of Arthvera LLP, operating as India&apos;s most trusted platform for financial dispute resolution and recovery services.
+                    Credsmadhan is the registered brand name of Arthvera LLP, operating as India&apos;s most trusted platform for financial dispute resolution and recovery services.
                   </p>
                 </div>
               </div>
