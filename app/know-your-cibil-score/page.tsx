@@ -29,9 +29,9 @@ export default function KnowYourCIBILScorePage() {
 
   const handleChange = (e: any) => {
     const { name, value, type, checked } = e.target
-    setFormData((prev) => ({ 
-      ...prev, 
-      [name]: type === "checkbox" ? checked : value 
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value
     }))
   }
 
@@ -211,7 +211,7 @@ export default function KnowYourCIBILScorePage() {
               {/* Right Column: Form Card */}
               <div className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-8 md:p-10 border border-gray-100 relative">
                 <div className="absolute top-0 right-0 w-2 h-full bg-[#F4F8FB] rounded-r-2xl border-l border-gray-100"></div>
-                
+
                 {!submitted ? (
                   <form onSubmit={handleSubmit} className="space-y-6 pr-4">
                     {/* Gender */}
@@ -269,6 +269,18 @@ export default function KnowYourCIBILScorePage() {
                           <input type="radio" name="reportType" value="TransUnion" checked={formData.reportType === "TransUnion"} onChange={handleChange} className="w-4 h-4 text-[#1B3F8B] focus:ring-[#1B3F8B]" />
                           <span className="text-sm text-gray-700">TransUnion</span>
                         </label>
+                        <label htmlFor="all" className="flex items-center gap-2 cursor-pointer">
+                          <input
+                            id="all"
+                            type="radio"
+                            name="reportType"
+                            value="All"
+                            checked={formData.reportType === "All"}
+                            onChange={handleChange}
+                            className="w-4 h-4 text-[#1B3F8B]"
+                          />
+                          <span className="text-sm text-gray-700">All Reports</span>
+                        </label>
                       </div>
                     </div>
 
@@ -303,7 +315,7 @@ export default function KnowYourCIBILScorePage() {
         {/* Content Sections */}
         <section className="py-16 bg-white">
           <div className="max-w-4xl mx-auto px-4 space-y-12">
-            
+
             <div className="space-y-4">
               <h2 className="text-2xl md:text-3xl font-bold text-[#1B3F8B]">What is Credit Score?</h2>
               <p className="text-gray-700 leading-relaxed">
