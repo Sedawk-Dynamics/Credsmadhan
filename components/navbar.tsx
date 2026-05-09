@@ -174,7 +174,7 @@ export default function Navbar() {
       </header>
 
       {/* Spacer */}
-      {!isHome && <div className="h-8 md:h-10 w-full" />}
+      {!isHome && <div className="h-16 md:h-24 w-full" />}
     </>
   )
 }
