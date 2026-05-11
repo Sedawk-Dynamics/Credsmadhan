@@ -27,6 +27,14 @@ export default function KnowYourCIBILScorePage() {
   const [loading, setLoading] = useState(false)
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
+  const getPaymentAmount = () => {
+    switch (formData.reportType) {
+      case "TransUnion": return 300;
+      case "All": return 550;
+      default: return 300; // Equifax and Experian
+    }
+  }
+
   const handleChange = (e: any) => {
     const { name, value, type, checked } = e.target
     setFormData((prev) => ({
@@ -71,7 +79,7 @@ export default function KnowYourCIBILScorePage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ amount: 99 }),
+        body: JSON.stringify({ amount: getPaymentAmount() }),
       })
 
       if (!orderRes.ok) throw new Error("Order creation failed")
@@ -297,7 +305,7 @@ export default function KnowYourCIBILScorePage() {
                       disabled={loading}
                       className="bg-[#1B3F8B] hover:bg-[#112A46] text-white font-bold py-3 px-8 rounded flex items-center justify-center transition-colors text-sm"
                     >
-                      {loading ? "Processing..." : "Get Credit Report"}
+                      {loading ? "Processing..." : `Pay ₹${getPaymentAmount()} & Get Credit Report`}
                     </button>
                   </form>
                 ) : (
