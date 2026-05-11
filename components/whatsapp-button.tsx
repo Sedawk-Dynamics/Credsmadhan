@@ -4,7 +4,7 @@ import { FaWhatsapp } from "react-icons/fa"
 import { motion } from "framer-motion"
 
 export default function WhatsAppButton() {
-  const phoneNumber = "919053903719"
+  const phoneNumber = "917428451153"
   const message = "Hi, I'd like to know more about your financial assistance services."
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
 

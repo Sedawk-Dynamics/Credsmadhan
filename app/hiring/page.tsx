@@ -172,7 +172,7 @@ export default function HiringPage() {
                     <p className="text-gray-600 font-medium mb-3">{job.department}</p>
                   </div>
                   <a
-                    href={`mailto:careers@credsmadhan.com?subject=Application for ${job.title}`}
+                    href={`mailto:hr@credsmadhan.com?subject=Application for ${job.title}`}
                     className="w-full sm:w-auto text-center inline-block px-6 py-2.5 bg-[#F0A500] hover:bg-[#FB923C] text-white font-semibold rounded-lg transition-colors whitespace-nowrap"
                   >
                     Apply Now
@@ -258,10 +258,10 @@ export default function HiringPage() {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Join Us?</h2>
             <p className="text-lg text-white/90 mb-8">
-              Send your resume to careers@credsmadhan.com with the subject line "Application for [Position Name]"
+              Send your resume to hr@credsmadhan.com with the subject line "Application for [Position Name]"
             </p>
             <a
-              href="mailto:careers@credsmadhan.com"
+              href="mailto:hr@credsmadhan.com"
               className="w-full sm:w-auto inline-block px-8 py-3.5 bg-[#F0A500] hover:bg-[#FB923C] text-white font-semibold rounded-lg transition-colors"
             >
               Send Your Resume
