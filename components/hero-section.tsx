@@ -76,11 +76,14 @@ export default function HeroSection() {
 
             {/* CTA Buttons */}
             <motion.div {...slideInRight(0.4)} className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 sm:mt-6">
-              <a
-                href="/contact-us"
+              
+                <a
+                href="https://calendly.com/crm-credsmadhan/30min"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-[#1B3F8B] text-white font-semibold text-sm sm:text-base rounded-xl hover:bg-[#142f6b] transition-all duration-200 shadow-lg hover:shadow-xl group"
               >
-                Book Case Review
+                 Book Case Review
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </a>
 
@@ -94,6 +97,8 @@ export default function HeroSection() {
                 Start Your Case Today
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </button>
+
+            
             </motion.div>
 
             {/* Social proof */}
@@ -101,7 +106,8 @@ export default function HeroSection() {
               <div className="flex -space-x-2">
                 {["#1B3F8B", "#2a52a8", "#F0A500", "#142f6b"].map((color, i) => (
                   <div
-                    key={i}
+                    key={i}   
+                    
                     className="w-9 h-9 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold"
                     style={{ backgroundColor: color }}
                   >

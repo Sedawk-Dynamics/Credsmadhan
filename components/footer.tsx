@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { useState } from "react"
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
 import { motion } from "framer-motion"
 
@@ -34,6 +35,39 @@ const socialLinks = [
 ]
 
 export default function Footer() {
+  const [email, setEmail] = useState("")
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
+  const [message, setMessage] = useState("")
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (status === "loading") return
+
+    setStatus("loading")
+    setMessage("")
+
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      })
+      const data = await res.json()
+
+      if (res.ok) {
+        setStatus("success")
+        setMessage(data.message || "You've been subscribed successfully.")
+        setEmail("")
+      } else {
+        setStatus("error")
+        setMessage(data.error || "Something went wrong. Please try again.")
+      }
+    } catch {
+      setStatus("error")
+      setMessage("Network error. Please try again.")
+    }
+  }
+
   return (
     <footer className="bg-white text-[#0E2454] border-t-4 border-[#1B3F8B]">
 
@@ -160,16 +194,34 @@ export default function Footer() {
               Mon – Sat | 10:00 AM – 7:00 PM
             </p>
 
-            <div className="flex gap-2 mt-2">
+            <form onSubmit={handleSubscribe} className="flex gap-2 mt-2">
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your Email"
-                className="bg-gray-100 px-3 py-2 text-sm rounded-lg w-full outline-none"
+                required
+                disabled={status === "loading"}
+                className="bg-gray-100 px-3 py-2 text-sm rounded-lg w-full outline-none disabled:opacity-60"
               />
-              <button className="bg-[#F0A500] px-4 py-2 rounded-lg font-bold text-[#1B3F8B] text-sm hover:bg-[#F7C04A]">
-                Subscribe
+              <button
+                type="submit"
+                disabled={status === "loading"}
+                className="bg-[#F0A500] px-4 py-2 rounded-lg font-bold text-[#1B3F8B] text-sm hover:bg-[#F7C04A] disabled:opacity-60 disabled:cursor-not-allowed whitespace-nowrap"
+              >
+                {status === "loading" ? "..." : "Subscribe"}
               </button>
-            </div>
+            </form>
+
+            {message && (
+              <p
+                className={`text-xs mt-2 ${
+                  status === "success" ? "text-green-600" : "text-red-600"
+                }`}
+              >
+                {message}
+              </p>
+            )}
           </motion.div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import Link from "next/link"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { motion } from "framer-motion"
+import { blogPosts } from "@/lib/blog-posts"
 import {
   ArrowRight,
   Clock3,
@@ -16,6 +17,7 @@ export default function BlogPage() {
   const [activeCategory, setActiveCategory] = useState("All")
 
   const featuredPost = {
+    slug: "how-to-improve-your-cibil-score-fast",
     title: "How to Improve Your CIBIL Score Fast in 2026",
     excerpt:
       "Learn proven expert-backed strategies to improve your credit score, remove negative remarks, and become loan-ready faster.",
@@ -36,68 +38,7 @@ export default function BlogPage() {
     "EMI Issues",
   ]
 
-  const posts = [
-    {
-      title: "How to Improve Your CIBIL Score Fast",
-      excerpt:
-        "Discover practical and legal ways to boost your credit score quickly and improve loan approval chances.",
-      category: "CIBIL Score",
-      date: "May 09, 2026",
-      readTime: "7 min read",
-      image:
-        "https://images.unsplash.com/photo-1601597111158-2fceff292cdc?q=80&w=1200&auto=format&fit=crop",
-    },
-    {
-      title: "Loan Settlement vs Loan Closure Explained",
-      excerpt:
-        "Understand the major differences between settlement and closure and how they affect your future credit eligibility.",
-      category: "Settlement",
-      date: "May 07, 2026",
-      readTime: "6 min read",
-      image:
-        "https://images.unsplash.com/photo-1556740749-887f6717d7e4?q=80&w=1200&auto=format&fit=crop",
-    },
-    {
-      title: "How to Remove Written-Off Status from CIBIL",
-      excerpt:
-        "Written-off loans can damage your profile heavily. Here’s how experts handle rectification and recovery.",
-      category: "Written Off",
-      date: "May 05, 2026",
-      readTime: "9 min read",
-      image:
-        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop",
-    },
-    {
-      title: "Top Credit Card Mistakes Hurting Your Score",
-      excerpt:
-        "Avoid these common credit card mistakes that silently reduce your CIBIL score every month.",
-      category: "Credit Cards",
-      date: "May 02, 2026",
-      readTime: "5 min read",
-      image:
-        "https://images.unsplash.com/photo-1556742031-c6961e8560b0?q=80&w=1200&auto=format&fit=crop",
-    },
-    {
-      title: "What to Do After Receiving Banking Notices",
-      excerpt:
-        "Legal banking notices can feel overwhelming. Understand your rights and the correct response process.",
-      category: "Banking Notices",
-      date: "Apr 29, 2026",
-      readTime: "7 min read",
-      image:
-        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop",
-    },
-    {
-      title: "EMI Bounce Issues & Credit Score Recovery",
-      excerpt:
-        "Repeated EMI bounce issues can impact future approvals. Learn recovery strategies from financial experts.",
-      category: "EMI Issues",
-      date: "Apr 25, 2026",
-      readTime: "6 min read",
-      image:
-        "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?q=80&w=1200&auto=format&fit=crop",
-    },
-  ]
+  const posts = blogPosts
 
   // FILTER LOGIC
   const filteredPosts =
@@ -195,10 +136,13 @@ export default function BlogPage() {
                       {featuredPost.excerpt}
                     </p>
 
-                    <button className="inline-flex items-center gap-2 text-[#F0A500] font-semibold hover:gap-3 transition-all duration-300">
+                    <Link
+                      href={`/blog/${featuredPost.slug}`}
+                      className="inline-flex items-center gap-2 text-[#F0A500] font-semibold hover:gap-3 transition-all duration-300"
+                    >
                       Read Full Article
                       <ArrowRight size={18} />
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </motion.div>
@@ -296,10 +240,13 @@ export default function BlogPage() {
                       {post.excerpt}
                     </p>
 
-                    <button className="inline-flex items-center gap-2 text-[#1B3F8B] font-semibold hover:text-[#F0A500] transition-all duration-300">
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="inline-flex items-center gap-2 text-[#1B3F8B] font-semibold hover:text-[#F0A500] transition-all duration-300"
+                    >
                       Read More
                       <ArrowRight size={17} />
-                    </button>
+                    </Link>
                   </div>
                 </motion.div>
               ))}

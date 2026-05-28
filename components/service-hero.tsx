@@ -69,12 +69,14 @@ export function ServiceHero({
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <button
-                onClick={onGetHelpClick}
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-[#F0A500] text-[#1B3F8B] font-bold rounded-xl text-sm sm:text-base hover:bg-[#F7C04A] transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 transform"
+              <a
+                href="https://calendly.com/crm-credsmadhan/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-[#F0A500] text-[#1B3F8B] font-bold rounded-xl text-sm sm:text-base hover:bg-[#F7C04A] transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 transform text-center"
               >
                 Get Expert consult
-              </button>
+              </a>
               <a
                 href="/services"
                 className="px-6 sm:px-8 py-3 sm:py-4 bg-white/20 text-white font-semibold rounded-xl text-sm sm:text-base hover:bg-white/30 transition-all duration-200 border border-white/30 hover:border-white/50 text-center"
