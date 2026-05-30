@@ -237,6 +237,22 @@ export default function Footer() {
       <div className="border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 gap-2">
           <span>© {new Date().getFullYear()} Credsmadhan</span>
+
+          <div className="flex items-center gap-3">
+            <a
+              href="/terms-and-conditions"
+              className="px-3 py-1.5 border border-gray-300 rounded-md text-gray-600 hover:border-[#F0A500] hover:text-[#F0A500] transition"
+            >
+              Terms &amp; Conditions
+            </a>
+            <a
+              href="/privacy-policy"
+              className="px-3 py-1.5 border border-gray-300 rounded-md text-gray-600 hover:border-[#F0A500] hover:text-[#F0A500] transition"
+            >
+              Privacy Policy
+            </a>
+          </div>
+
           <span>Cred Ki Baat, Smadhan Ke Saath</span>
         </div>
       </div>
