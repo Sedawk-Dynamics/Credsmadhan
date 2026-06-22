@@ -5,27 +5,27 @@ import { motion } from "framer-motion"
 
 const testimonials = [
   {
-    name: "Anonymous Client",
+    name: "Rajesh Sharma",
     designation: "Small Business Owner",
     rating: 5,
     text: "The team provided incredible support during a very stressful financial period. Their guidance on restructuring our business loans gave us the breathing room we needed to get back on track. Highly professional service.",
-    initials: "AC",
+    initials: "RS",
     color: "#1B3F8B",
   },
   {
-    name: "Salaried Professional",
+    name: "Priya Nair",
     designation: "Corporate Employee",
     rating: 5,
     text: "I had a persistent issue with my credit report that was affecting my ability to secure a home loan. The experts here methodically analyzed my profile and guided me step-by-step to improve my financial health.",
-    initials: "SP",
+    initials: "PN",
     color: "#2a52a8",
   },
   {
-    name: "Anonymous Client",
+    name: "Amit Verma",
     designation: "Retail Investor",
     rating: 5,
     text: "When I faced an unfair grievance with my bank, I didn't know where to turn. Their escalation support team was transparent, kept me updated, and helped resolve the dispute much faster than I anticipated.",
-    initials: "AC",
+    initials: "AV",
     color: "#F0A500",
   },
 ]

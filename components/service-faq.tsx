@@ -14,7 +14,7 @@ interface ServiceFAQProps {
 }
 
 export function ServiceFAQ({ items }: ServiceFAQProps) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0)
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   const containerVariants = {
     hidden: { opacity: 0 },

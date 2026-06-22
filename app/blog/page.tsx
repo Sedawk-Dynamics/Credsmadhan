@@ -7,7 +7,6 @@ import { motion } from "framer-motion"
 import { blogPosts } from "@/lib/blog-posts"
 import {
   ArrowRight,
-  Clock3,
   TrendingUp,
   BadgeCheck,
   MessageCircle,
@@ -121,11 +120,6 @@ export default function BlogPage() {
                       <span className="text-white/70 text-sm">
                         {featuredPost.date}
                       </span>
-
-                      <span className="text-white/70 text-sm flex items-center gap-1">
-                        <Clock3 size={14} />
-                        {featuredPost.readTime}
-                      </span>
                     </div>
 
                     <h2 className="text-3xl font-bold text-white mb-4 leading-snug">
@@ -223,13 +217,8 @@ export default function BlogPage() {
                   </div>
 
                   <div className="p-7">
-                    <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                    <div className="flex items-center text-sm text-gray-500 mb-4">
                       <span>{post.date}</span>
-
-                      <span className="flex items-center gap-1">
-                        <Clock3 size={14} />
-                        {post.readTime}
-                      </span>
                     </div>
 
                     <h3 className="text-2xl font-bold text-[#0E224D] mb-4 leading-snug group-hover:text-[#1B3F8B] transition-colors">

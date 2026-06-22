@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef, type ChangeEvent } from "react"
-import { X, Search, ChevronLeft, Upload, FileText, Check, Loader2, CheckCircle2 } from "lucide-react"
+import { X, ChevronLeft, ChevronDown, Upload, FileText, Check, Loader2, CheckCircle2 } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
 type Category = { id: string; label: string }
@@ -53,9 +53,8 @@ export default function FinancialHelpPopup({ autoOpen = false }: { autoOpen?: bo
   const [files, setFiles] = useState<Files>({})
   const [fileErrors, setFileErrors] = useState<FileErrors>({})
 
-  // searchable dropdown state
+  // category dropdown state (opens downward)
   const [dropdownOpen, setDropdownOpen] = useState(false)
-  const [query, setQuery] = useState("")
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   // submission state
@@ -94,7 +93,6 @@ export default function FinancialHelpPopup({ autoOpen = false }: { autoOpen?: bo
     setDetails({})
     setFiles({})
     setFileErrors({})
-    setQuery("")
     setDropdownOpen(false)
     setSubmitting(false)
     setSubmitError("")
@@ -177,10 +175,6 @@ export default function FinancialHelpPopup({ autoOpen = false }: { autoOpen?: bo
       setSubmitting(false)
     }
   }
-
-  const filteredCategories = CATEGORIES.filter((c) =>
-    c.label.toLowerCase().includes(query.toLowerCase()),
-  )
 
   return (
     <AnimatePresence>
@@ -300,53 +294,40 @@ export default function FinancialHelpPopup({ autoOpen = false }: { autoOpen?: bo
                 {/* STEP 2 */}
                 {step === 2 && (
                   <form onSubmit={handleSubmit} className="space-y-5">
-                    {/* Searchable category dropdown */}
-                    <div ref={dropdownRef} className="relative">
+                    {/* Category dropdown (opens downward, in-flow) */}
+                    <div ref={dropdownRef}>
                       <label className={labelClass}>Problem Category</label>
                       <button
                         type="button"
                         onClick={() => setDropdownOpen((o) => !o)}
-                        className={`${inputClass} flex items-center justify-between text-left`}
+                        className={`${inputClass} bg-white flex items-center justify-between text-left`}
                       >
                         <span className={category ? "text-[#4A5568]" : "text-gray-400"}>
-                          {category ? category.label : "Select a category"}
+                          {category ? category.label : "Select a Problem Category"}
                         </span>
-                        <Search size={18} className="text-[#1B3F8B] shrink-0" />
+                        <ChevronDown
+                          size={18}
+                          className={`text-[#1B3F8B] shrink-0 transition-transform ${dropdownOpen ? "rotate-180" : ""}`}
+                        />
                       </button>
 
                       {dropdownOpen && (
-                        <div className="absolute z-20 mt-2 w-full bg-white border-2 border-[#E2E8F0] rounded-lg shadow-xl max-h-64 overflow-hidden flex flex-col">
-                          <div className="p-2 border-b border-[#E2E8F0]">
-                            <input
-                              autoFocus
-                              type="text"
-                              placeholder="Search categories..."
-                              value={query}
-                              onChange={(e) => setQuery(e.target.value)}
-                              className="w-full px-3 py-2 rounded-md border border-[#E2E8F0] focus:border-[#1B3F8B] focus:outline-none text-sm text-[#4A5568]"
-                            />
-                          </div>
-                          <div className="overflow-y-auto">
-                            {filteredCategories.length === 0 && (
-                              <p className="px-4 py-3 text-sm text-gray-400">No matches found</p>
-                            )}
-                            {filteredCategories.map((c) => (
-                              <button
-                                key={c.id}
-                                type="button"
-                                onClick={() => {
-                                  setCategory(c)
-                                  setDetails({})
-                                  setDropdownOpen(false)
-                                  setQuery("")
-                                }}
-                                className="w-full text-left px-4 py-2.5 text-sm text-[#4A5568] hover:bg-[#E0EAFF] flex items-center justify-between"
-                              >
-                                {c.label}
-                                {category?.id === c.id && <Check size={16} className="text-[#1B3F8B]" />}
-                              </button>
-                            ))}
-                          </div>
+                        <div className="mt-2 w-full bg-white border-2 border-[#E2E8F0] rounded-lg shadow-xl max-h-64 overflow-y-auto">
+                          {CATEGORIES.map((c) => (
+                            <button
+                              key={c.id}
+                              type="button"
+                              onClick={() => {
+                                setCategory(c)
+                                setDetails({})
+                                setDropdownOpen(false)
+                              }}
+                              className="w-full text-left px-4 py-2.5 text-sm text-[#4A5568] hover:bg-[#E0EAFF] flex items-center justify-between"
+                            >
+                              {c.label}
+                              {category?.id === c.id && <Check size={16} className="text-[#1B3F8B]" />}
+                            </button>
+                          ))}
                         </div>
                       )}
                     </div>

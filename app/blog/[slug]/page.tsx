@@ -6,7 +6,6 @@ import Footer from "@/components/footer"
 import {
   ArrowLeft,
   ArrowRight,
-  Clock3,
   CalendarDays,
   MessageCircle,
 } from "lucide-react"
@@ -57,7 +56,7 @@ export default async function BlogDetailPage({
       <main className="flex-grow pt-28">
         {/* HERO */}
         <section className="relative overflow-hidden bg-gradient-to-br from-[#0E224D] via-[#163B82] to-[#09162E]">
-          <div className="absolute inset-0 opacity-10 bg-[url('/grid.svg')]" />
+          <div className="absolute inset-0 opacity-10 bg-[url('/grid.svg')] pointer-events-none" />
 
           <div className="container mx-auto px-4 max-w-7xl py-16 md:py-24">
             <Link
@@ -79,11 +78,6 @@ export default async function BlogDetailPage({
                   <div className="flex items-center gap-2 text-white/70 text-sm">
                     <CalendarDays size={15} />
                     {post.date}
-                  </div>
-
-                  <div className="flex items-center gap-2 text-white/70 text-sm">
-                    <Clock3 size={15} />
-                    {post.readTime}
                   </div>
                 </div>
 
@@ -136,15 +130,6 @@ export default async function BlogDetailPage({
                     </p>
                     <p className="font-semibold text-[#0E224D]">
                       {post.date}
-                    </p>
-                  </div>
-
-                  <div>
-                    <p className="text-sm text-gray-500 mb-1">
-                      Reading Time
-                    </p>
-                    <p className="font-semibold text-[#0E224D]">
-                      {post.readTime}
                     </p>
                   </div>
                 </div>
@@ -277,12 +262,8 @@ export default async function BlogDetailPage({
                     </div>
 
                     <div className="p-7">
-                      <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                      <div className="flex items-center text-sm text-gray-500 mb-4">
                         <span>{related.date}</span>
-                        <span className="flex items-center gap-1">
-                          <Clock3 size={14} />
-                          {related.readTime}
-                        </span>
                       </div>
 
                       <h3 className="text-2xl font-bold text-[#0E224D] mb-3 group-hover:text-[#1B3F8B] transition-colors leading-snug">
