@@ -91,7 +91,7 @@ export default function KnowYourCIBILScorePage() {
         amount: order.amount,
         currency: order.currency,
         order_id: order.id,
-        name: "CredMadhan",
+        name: "Credsmadhan",
         description: "CIBIL Report",
 
         handler: async function (response: any) {
@@ -296,7 +296,7 @@ export default function KnowYourCIBILScorePage() {
                     <div className="flex items-start gap-3 pt-2">
                       <input type="checkbox" name="agreed" checked={formData.agreed} onChange={handleChange} className="mt-1 w-4 h-4 text-[#1B3F8B] focus:ring-[#1B3F8B] rounded" />
                       <p className="text-xs text-gray-600 leading-relaxed">
-                        I have read and agree to <a href="#" className="text-blue-600 hover:underline">Credit Score Terms of Use</a> and hereby appoint <strong>CredMadhan</strong> as my authorised representative to receive my credit information from TransUnion / Equifax / Experian
+                        I have read and agree to <a href="#" className="text-blue-600 hover:underline">Credit Score Terms of Use</a> and hereby appoint <strong>Credsmadhan</strong> as my authorised representative to receive my credit information from TransUnion / Equifax / Experian
                       </p>
                     </div>
 
