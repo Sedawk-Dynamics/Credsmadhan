@@ -1,28 +1,25 @@
 import { NextResponse } from "next/server"
 import nodemailer from "nodemailer"
+import { contactConsentSchema, consentDeclaration, consentStatements, consentVersion } from "@/lib/contact-consent"
+
+function escapeHtml(value: string) {
+  return value.replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]!)
+}
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json()
-
-    const { name, email, phone, service, message } = body
-
-    // Validate required fields
-    if (!name || !email || !message) {
-      return NextResponse.json(
-        { error: "Missing required fields: name, email, and message are mandatory" },
-        { status: 400 }
-      )
+    let body: unknown
+    try { body = await req.json() } catch {
+      return NextResponse.json({ error: "Invalid request body." }, { status: 400 })
     }
-
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: "Invalid email address format" },
-        { status: 400 }
-      )
-    }
+    const result = contactConsentSchema.safeParse(body)
+    if (!result.success) return NextResponse.json({ error: result.error.issues[0].message }, { status: 400 })
+    const submission = result.data
+    const { name, email, phone, service } = Object.fromEntries(
+      Object.entries(submission).filter((entry): entry is [string, string] => typeof entry[1] === "string").map(([key, value]) => [key, escapeHtml(value)])
+    )
+    const submittedAt = new Date().toISOString()
+    const consentRecord = `<h3>Consent &amp; Authorization</h3><ol>${consentStatements.map(({ text }) => `<li style="margin-bottom: 12px;">Accepted: ${escapeHtml(text)}</li>`).join("")}</ol><p><strong>Declaration:</strong> ${escapeHtml(consentDeclaration)}</p><p>Submitted at (UTC): ${submittedAt}<br>Consent version: ${consentVersion}<br>Source: /contact-us</p>`
 
     // Create transporter with Gmail SMTP settings
     const transporter = nodemailer.createTransport({
@@ -42,12 +39,12 @@ export async function POST(req: Request) {
     const adminMailOptions = {
       from: process.env.FROM_EMAIL,
       to: process.env.TO_EMAIL,
-      replyTo: email,
-      subject: `New Contact Form Submission from ${name}`,
+      replyTo: submission.email,
+      subject: `New Client Consent from ${submission.name}`,
       html: `
         <div style="font-family: Arial, sans-serif; color: #333;">
           <h2 style="color: #1B3F8B; border-bottom: 2px solid #F0A500; padding-bottom: 10px;">
-            New Contact Form Submission
+            New Client Consent &amp; Authorization
           </h2>
 
           <div style="margin-top: 20px;">
@@ -75,8 +72,7 @@ export async function POST(req: Request) {
           </div>
 
           <div style="margin-top: 20px; padding: 15px; background-color: #E0EAFF; border-left: 4px solid #1B3F8B; border-radius: 4px;">
-            <h3 style="color: #1B3F8B; margin-top: 0;">Message:</h3>
-            <p style="color: #4A5568; line-height: 1.6; white-space: pre-wrap;">${message}</p>
+            ${consentRecord}
           </div>
 
           <hr style="margin-top: 30px; border: none; border-top: 1px solid #E2E8F0;">
@@ -98,14 +94,15 @@ export async function POST(req: Request) {
     // Email to customer (confirmation)
     const customerMailOptions = {
       from: process.env.FROM_EMAIL,
-      to: email,
-      subject: "We Received Your Message - Credsmadhan",
+      to: submission.email,
+      subject: "We Received Your Consent - Credsmadhan",
       html: `
         <div style="font-family: Arial, sans-serif; color: #333;">
           <h2 style="color: #1B3F8B;">Thank You, ${name}!</h2>
           <p style="color: #4A5568; line-height: 1.6;">
-            We have received your message and appreciate you reaching out to Credsmadhan.
+            We have received your consent and authorization for ${service}. Thank you for reaching out to Credsmadhan.
           </p>
+          ${consentRecord}
           
           <div style="margin-top: 20px; padding: 15px; background-color: #E0EAFF; border-radius: 4px;">
             <p style="color: #1B3F8B; margin: 0; font-weight: bold;">
@@ -134,12 +131,20 @@ export async function POST(req: Request) {
     }
 
     // Send customer confirmation email
-    await transporter.sendMail(customerMailOptions)
+    let confirmationSent = true
+    try {
+      await transporter.sendMail(customerMailOptions)
+    } catch {
+      // The admin already received the consent. Do not invite duplicate submissions.
+      confirmationSent = false
+      console.error("Contact consent received, but customer confirmation could not be sent.")
+    }
 
     return NextResponse.json(
       {
         success: true,
-        message: "Your message has been sent successfully. We will contact you soon.",
+        confirmationSent,
+        message: "Your consent has been submitted successfully. We will contact you soon.",
       },
       { status: 200 }
     )

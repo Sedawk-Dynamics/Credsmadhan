@@ -1,70 +1,12 @@
 "use client"
 
-import { useState } from "react"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { motion } from "framer-motion"
-import { Phone, Mail, MapPin, Send, Loader } from "lucide-react"
-import Link from "next/link"
+import { Phone, Mail, MapPin } from "lucide-react"
+import ContactConsentForm from "@/components/contact-consent-form"
 
 export default function ContactUsPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    service: "",
-    message: "",
-  })
-  const [loading, setLoading] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
-  const [error, setError] = useState("")
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
-  }
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setLoading(true)
-    setError("")
-
-    try {
-      const response = await fetch("/api/contact-send", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to send message")
-      }
-
-      setSubmitted(true)
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        service: "",
-        message: "",
-      })
-
-      setTimeout(() => {
-        setSubmitted(false)
-      }, 5000)
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred")
-    } finally {
-      setLoading(false)
-    }
-  }
-
   return (
     <main className="bg-white">
       <Navbar />
@@ -78,9 +20,9 @@ export default function ContactUsPage() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance">Get In Touch</h1>
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance">Client Consent &amp; Authorization</h1>
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-              Have questions about our services? We&apos;re here to help. Reach out to our team for a free consultation.
+              Please read carefully and provide your consent to proceed with our services.
             </p>
           </motion.div>
         </div>
@@ -149,140 +91,7 @@ export default function ContactUsPage() {
               viewport={{ once: true }}
               className="lg:col-span-2"
             >
-              <div className="bg-gradient-to-br from-[#F7F9FC] to-[#F0F6FF] rounded-2xl p-8 border border-[#1B3F8B]/10">
-                <h2 className="font-serif text-2xl font-bold text-[#1B3F8B] mb-6">Send Us a Message</h2>
-
-                {submitted && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="mb-6 p-4 rounded-xl bg-green-50 border border-green-200 text-green-700"
-                  >
-                    Thank you for your message! We&apos;ll get back to you within 24 hours.
-                  </motion.div>
-                )}
-
-                {error && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700"
-                  >
-                    {error}
-                  </motion.div>
-                )}
-
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  {/* Name */}
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-semibold text-[#1B3F8B] mb-2">
-                      Full Name *
-                    </label>
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      placeholder="Your full name"
-                      className="w-full px-4 py-3 rounded-lg border border-[#1B3F8B]/20 bg-white focus:outline-none focus:ring-2 focus:ring-[#1B3F8B]/30 focus:border-[#1B3F8B] transition-all"
-                    />
-                  </div>
-
-                  {/* Email & Phone */}
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-semibold text-[#1B3F8B] mb-2">
-                        Email Address *
-                      </label>
-                      <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        placeholder="your@email.com"
-                        className="w-full px-4 py-3 rounded-lg border border-[#1B3F8B]/20 bg-white focus:outline-none focus:ring-2 focus:ring-[#1B3F8B]/30 focus:border-[#1B3F8B] transition-all"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-semibold text-[#1B3F8B] mb-2">
-                        Phone Number
-                      </label>
-                      <input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="+91 XXXXXXXXXX"
-                        className="w-full px-4 py-3 rounded-lg border border-[#1B3F8B]/20 bg-white focus:outline-none focus:ring-2 focus:ring-[#1B3F8B]/30 focus:border-[#1B3F8B] transition-all"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Service */}
-                  <div>
-                    <label htmlFor="service" className="block text-sm font-semibold text-[#1B3F8B] mb-2">
-                      Service Required
-                    </label>
-                    <select
-                      id="service"
-                      name="service"
-                      value={formData.service}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-[#1B3F8B]/20 bg-white focus:outline-none focus:ring-2 focus:ring-[#1B3F8B]/30 focus:border-[#1B3F8B] transition-all text-[#4A5568]"
-                    >
-                      <option value="">Select a service...</option>
-                      <option>Credit & CIBIL Analysis & Rectification</option>
-                      <option>Loan & EMI Stress Guidance</option>
-                      <option>Banking & Credit Card Support</option>
-                      <option>Insurance Issue Assistance</option>
-                      <option>Unclaimed Money Support</option>
-                      <option>Grievance & Complaint Escalation</option>
-                      <option>Documentation & Case Facilitation</option>
-                    </select>
-                  </div>
-
-                  {/* Message */}
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-semibold text-[#1B3F8B] mb-2">
-                      Message *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={5}
-                      placeholder="Describe your financial issue or query in detail..."
-                      className="w-full px-4 py-3 rounded-lg border border-[#1B3F8B]/20 bg-white focus:outline-none focus:ring-2 focus:ring-[#1B3F8B]/30 focus:border-[#1B3F8B] transition-all resize-none"
-                    />
-                  </div>
-
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full py-3 px-4 bg-[#1B3F8B] text-white font-bold rounded-lg hover:bg-[#142f6b] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2"
-                  >
-                    {loading ? (
-                      <>
-                        <Loader size={18} className="animate-spin" />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <Send size={18} />
-                        Send Message
-                      </>
-                    )}
-                  </button>
-                </form>
-              </div>
+              <ContactConsentForm />
             </motion.div>
           </div>
         </div>
