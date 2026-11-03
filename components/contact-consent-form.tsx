@@ -3,12 +3,11 @@
 import { useRef, useState } from "react"
 import Link from "next/link"
 import { AlertTriangle, CheckCircle2, Loader, ShieldCheck, UserRound } from "lucide-react"
-import { contactConsentSchema, contactServices, consentDeclaration, consentStatements } from "@/lib/contact-consent"
+import { contactConsentSchema, contactServices, consentDeclaration, consentStatements, consentVersion } from "@/lib/contact-consent"
 
 export default function ContactConsentForm() {
   const [loading, setLoading] = useState(false)
   const [submittedEmail, setSubmittedEmail] = useState("")
-  const [confirmationSent, setConfirmationSent] = useState(false)
   const [error, setError] = useState("")
   const submitting = useRef(false)
 
@@ -29,13 +28,25 @@ export default function ContactConsentForm() {
     submitting.current = true
     setLoading(true)
     try {
-      const response = await fetch("/api/contact-send", {
-        method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(result.data),
+      const formData = new FormData()
+      formData.append("access_key", "f5674d67-795d-46fd-bca6-5c4c8cdefeea")
+      formData.append("subject", "New Contact Consent - Credsmadhan")
+      for (const key of ["name", "email", "phone", "service"] as const) {
+        formData.append(key, result.data[key])
+      }
+      for (const { key, text } of consentStatements) {
+        formData.append(key, `Accepted: ${text}`)
+      }
+      formData.append("declaration", consentDeclaration)
+      formData.append("consent_version", consentVersion)
+      formData.append("submitted_at", new Date().toISOString())
+      formData.append("source", "/contact-us")
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
       })
       const data = await response.json()
-      if (!response.ok) throw new Error(data.error || "Unable to submit your consent. Please try again.")
-      setConfirmationSent(data.confirmationSent === true)
+      if (!response.ok || data.success !== true) throw new Error(data.message || "Unable to submit your consent. Please try again.")
       setSubmittedEmail(result.data.email)
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unable to submit your consent. Please try again.")
@@ -50,7 +61,7 @@ export default function ContactConsentForm() {
       <CheckCircle2 className="mx-auto mb-4 h-16 w-16 text-green-600" aria-hidden="true" />
       <h2 className="text-2xl font-bold text-[#1B3F8B] mb-3">Consent Submitted Successfully!</h2>
       <p className="text-gray-700 mb-4">Thank you for providing your consent. We have received your authorization and will contact you within 24 hours.</p>
-      <p className="text-sm text-gray-600">{confirmationSent ? <>A confirmation email has been sent to <strong className="break-all">{submittedEmail}</strong>.</> : "Your submission was received, but we could not send the confirmation email. You do not need to submit again."}</p>
+      <p className="text-sm text-gray-600">Contact email: <strong className="break-all">{submittedEmail}</strong>.</p>
       <Link href="/" className="mt-6 inline-block rounded-lg bg-[#1B3F8B] px-6 py-3 font-semibold text-white">Return to Home</Link>
     </div>
   )
