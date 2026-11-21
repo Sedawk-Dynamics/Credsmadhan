@@ -1,5 +1,7 @@
 import crypto from "crypto";
 import nodemailer from "nodemailer";
+import Razorpay from "razorpay";
+import { getReportPrice } from "@/lib/credit-report-pricing";
 
 function verifyRazorpaySignature(
   orderId: string,
@@ -33,9 +35,10 @@ type FormData = {
 async function sendLeadEmail(opts: {
   razorpay_order_id: string;
   razorpay_payment_id: string;
+  amountPaid: number;
   formData?: FormData;
 }) {
-  const { razorpay_order_id, razorpay_payment_id, formData = {} } = opts;
+  const { razorpay_order_id, razorpay_payment_id, amountPaid, formData = {} } = opts;
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -67,6 +70,7 @@ async function sendLeadEmail(opts: {
         <h3>💳 Payment Details</h3>
         <p><strong>Payment ID:</strong> ${razorpay_payment_id}</p>
         <p><strong>Order ID:</strong> ${razorpay_order_id}</p>
+        <p><strong>Amount:</strong> ₹${amountPaid}</p>
 
         <p style="color:green;"><strong>Status: PAID ✅</strong></p>
       `,
@@ -113,10 +117,33 @@ export async function POST(req: Request) {
       );
     }
 
+    // Confirm with Razorpay that the order was created for a real report type
+    // at the server-side price, so a tampered amount can't produce a "PAID" lead.
+    const razorpay = new Razorpay({
+      key_id: process.env.RAZORPAY_KEY_ID!,
+      key_secret: secret,
+    });
+    const order = await razorpay.orders.fetch(razorpay_order_id);
+    const orderReportType = order.notes?.reportType;
+    const expectedAmount = getReportPrice(orderReportType);
+
+    if (expectedAmount === null || Number(order.amount) !== expectedAmount * 100) {
+      console.error("VERIFY AMOUNT MISMATCH:", {
+        razorpay_order_id,
+        orderAmount: order.amount,
+        orderReportType,
+      });
+      return Response.json(
+        { success: false, error: "Payment amount does not match the selected report" },
+        { status: 400 }
+      );
+    }
+
     void sendLeadEmail({
       razorpay_order_id,
       razorpay_payment_id,
-      formData,
+      amountPaid: expectedAmount,
+      formData: { ...formData, reportType: String(orderReportType) },
     }).catch((err) => console.error("VERIFY EMAIL ERROR:", err));
 
     return Response.json({ success: true });

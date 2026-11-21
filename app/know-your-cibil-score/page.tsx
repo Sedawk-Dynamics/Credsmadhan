@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { REPORT_PRICES, getReportPrice, isReportType } from "@/lib/credit-report-pricing"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { motion } from "framer-motion"
@@ -27,13 +28,16 @@ export default function KnowYourCIBILScorePage() {
   const [loading, setLoading] = useState(false)
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
-  const getPaymentAmount = () => {
-    switch (formData.reportType) {
-      case "TransUnion": return 300;
-      case "All": return 550;
-      default: return 300; // Equifax and Experian
+  // Pre-select a report when arriving from a homepage card, e.g. ?type=All
+  useEffect(() => {
+    const type = new URLSearchParams(window.location.search).get("type")
+    if (isReportType(type)) {
+      setFormData((prev) => ({ ...prev, reportType: type }))
     }
-  }
+  }, [])
+
+  const getPaymentAmount = () =>
+    getReportPrice(formData.reportType) ?? REPORT_PRICES.Equifax
 
   const handleChange = (e: any) => {
     const { name, value, type, checked } = e.target
@@ -79,7 +83,7 @@ export default function KnowYourCIBILScorePage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ amount: getPaymentAmount() }),
+        body: JSON.stringify({ reportType: formData.reportType }),
       })
 
       if (!orderRes.ok) throw new Error("Order creation failed")
