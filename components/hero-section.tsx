@@ -2,6 +2,7 @@
 
 import { ArrowRight, Shield, Star } from "lucide-react"
 import { motion } from "framer-motion"
+import Link from "next/link"
 import HeroCarousel from "./hero-carousel"
 import FinancialHelpPopup from "./financial-help-popup"
 
@@ -75,30 +76,36 @@ export default function HeroSection() {
             </motion.div>
 
             {/* CTA Buttons */}
-            <motion.div {...slideInRight(0.4)} className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 sm:mt-6">
-              
+            <motion.div {...slideInRight(0.4)} className="flex flex-col gap-3 mt-4 sm:mt-6">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <Link
+                  href="/services/credit-report-rectification"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-[#1B3F8B] text-white font-semibold text-sm sm:text-base rounded-xl hover:bg-[#142f6b] transition-all duration-200 shadow-lg hover:shadow-xl group"
+                >
+                  Get Credit Report Assistance
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+
+                <Link
+                  href="/services"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-[#F0A500] text-[#1B3F8B] font-semibold text-sm sm:text-base rounded-xl hover:bg-[#F7C04A] transition-all duration-200 shadow-lg hover:shadow-xl group"
+                >
+                  Explore All Services
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+
+              <p className="text-sm text-[#4A5568]">
+                Prefer to talk?{" "}
                 <a
-                href="https://calendly.com/crm-credsmadhan/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-[#1B3F8B] text-white font-semibold text-sm sm:text-base rounded-xl hover:bg-[#142f6b] transition-all duration-200 shadow-lg hover:shadow-xl group"
-              >
-                 Book Case Review
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </a>
-
-              <button
-                onClick={(e) => {
-                  e.preventDefault()
-                  window.dispatchEvent(new CustomEvent('open-financial-popup'))
-                }}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-[#F0A500] text-[#1B3F8B] font-semibold text-sm sm:text-base rounded-xl hover:bg-[#F7C04A] transition-all duration-200 shadow-lg hover:shadow-xl group"
-              >
-                Start Your Case Today
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-
-            
+                  href="https://calendly.com/crm-credsmadhan/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-[#1B3F8B] underline hover:text-[#F0A500]"
+                >
+                  Book a case review call
+                </a>
+              </p>
             </motion.div>
 
             {/* Social proof */}
@@ -146,9 +153,9 @@ export default function HeroSection() {
                 <span className="text-xl font-bold text-[#F0A500]">✓</span>
               </div>
               <div>
-                <p className="text-xs text-[#4A5568] font-medium">Credit Score</p>
-                <p className="text-lg font-bold text-[#1B3F8B]">Improved</p>
-                <p className="text-[10px] text-green-600 font-semibold">Guaranteed Steps</p>
+                <p className="text-xs text-[#4A5568] font-medium">Credit Report</p>
+                <p className="text-lg font-bold text-[#1B3F8B]">Reviewed</p>
+                <p className="text-[10px] text-green-600 font-semibold">Step-by-step process</p>
               </div>
             </motion.div>
 

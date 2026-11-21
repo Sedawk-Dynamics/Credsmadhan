@@ -155,17 +155,37 @@ export default function Navbar() {
               </Link>
             ))}
 
-            <a
-              href="https://crm.credsmadhan.com"
-              target="_blank"
-              className="text-center px-4 py-2 bg-emerald-500 text-white rounded-lg text-sm"
+            <div className="grid grid-cols-2 gap-2">
+              <a
+                href="https://crm.credsmadhan.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-center px-4 py-2 bg-emerald-500 text-white rounded-lg text-sm"
+              >
+                User Login
+              </a>
+              <a
+                href="https://crm.credsmadhan.com/admin"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-center px-4 py-2 border border-emerald-500 text-emerald-700 rounded-lg text-sm"
+              >
+                Admin Login
+              </a>
+            </div>
+
+            <Link
+              href="/know-your-cibil-score"
+              onClick={() => setIsOpen(false)}
+              className="text-center px-4 py-2 bg-[#F0A500] text-[#1B3F8B] rounded-lg text-sm font-bold"
             >
-              User Login
-            </a>
+              Check CIBIL
+            </Link>
 
             <Link
               href="/contact-us"
-              className="text-center px-4 py-2 bg-[#F0A500] text-[#1B3F8B] rounded-lg text-sm font-bold"
+              onClick={() => setIsOpen(false)}
+              className="text-center px-4 py-2 border border-[#F0A500] text-[#1B3F8B] rounded-lg text-sm font-bold"
             >
               Free Consultation
             </Link>

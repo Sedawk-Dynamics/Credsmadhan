@@ -21,6 +21,12 @@ const quickLinks = [
   { label: "About Us", href: "/about-us" },
   { label: "Our Solutions", href: "/services" },
   { label: "Why Choose Us", href: "/#why-us" },
+  { label: "Results", href: "/result" },
+  { label: "Check CIBIL", href: "/know-your-cibil-score" },
+  { label: "Smart Credit Tools", href: "/#smart-tools" },
+  { label: "Blog", href: "/blog" },
+  { label: "FAQs", href: "/faq" },
+  { label: "Fraud Alert", href: "/fraud-alert" },
   { label: "Contact Us", href: "/contact-us" },
   { label: "Hiring", href: "/hiring" },
 ]
