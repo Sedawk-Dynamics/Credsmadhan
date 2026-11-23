@@ -5,9 +5,11 @@
 export type ReportType = "Equifax" | "Experian" | "TransUnion" | "All"
 
 export const REPORT_PRICES: Record<ReportType, number> = {
-  Equifax: 300,
-  Experian: 300,
-  TransUnion: 300,
+  Equifax: 299,
+  Experian: 299,
+  TransUnion: 299,
+  // 3-bureau bundle. The spec's ₹600 four-bureau bundle needs CRIF High Mark,
+  // which must not be sold until its integration and consent are confirmed.
   All: 550,
 }
 
